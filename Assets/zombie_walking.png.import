@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv8mpqyk2b25n"
-path="res://.godot/imported/Screenshot 2025-02-02 003438.png-4d33877000e95853f92cc579530a2eca.ctex"
+uid="uid://dtlw8jha53os0"
+path="res://.godot/imported/zombie_walking.png-f99bf029982692e722668bc031164d22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Screenshot 2025-02-02 003438.png"
-dest_files=["res://.godot/imported/Screenshot 2025-02-02 003438.png-4d33877000e95853f92cc579530a2eca.ctex"]
+source_file="res://Assets/zombie_walking.png"
+dest_files=["res://.godot/imported/zombie_walking.png-f99bf029982692e722668bc031164d22.ctex"]
 
 [params]
 
