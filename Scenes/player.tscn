@@ -23,6 +23,5 @@ polygon = PackedVector2Array(-12, -22, -2, -22, 2, -22, 8, -22, 10, -22, 12, -22
 script = ExtResource("3_k0xct")
 
 [node name="ShootingSystem" type="Marker2D" parent="."]
-visible = false
 position = Vector2(25.761, 0.164909)
 script = ExtResource("4_881yo")

@@ -20,7 +20,7 @@ var health_pickup_scene = preload("res://Scenes/health_pickup.tscn")
 
 @export_group("Scanning for player")
 @export var angle_cone_of_vision = 90
-@export var max_vision_distance = 250
+@export var max_vision_distance = 400
 @export var angle_between_rays = 30
 
 @export_group("Attack")

@@ -1167,6 +1167,3 @@ position = Vector2(-1465, -662)
 
 [node name="Extract3" parent="." instance=ExtResource("8_x7c6w")]
 position = Vector2(1764, -1476)
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.411765, 0.411765, 0.411765, 1)

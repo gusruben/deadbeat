@@ -34,7 +34,6 @@ show_percentage = false
 script = ExtResource("3_dbmbk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("4_0gn2x")
 texture = ExtResource("1_o0ssw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
