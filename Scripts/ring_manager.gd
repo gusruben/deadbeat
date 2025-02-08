@@ -17,7 +17,7 @@ func _ready():
 	wrapper.add_child(marker)
 
 func _process(_delta):
-	wrapper.position = get_viewport().get_mouse_position()
+	wrapper.position = get_viewport().get_visible_rect().size / 2
 
 func spawn_ring():
 	var ring = Ring.instantiate()
