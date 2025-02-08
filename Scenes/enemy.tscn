@@ -91,6 +91,8 @@ script = ExtResource("9_6o8ke")
 collision_layer = 16
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
+position = Vector2(1.99998, 0)
+scale = Vector2(7.73611, 6.75)
 polygon = PackedVector2Array(0, 0, 45, -25, 45, 25)
 
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]

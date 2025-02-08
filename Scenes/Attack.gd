@@ -23,6 +23,10 @@ func physics_update(delta):
 
 func attack():
 	var player = get_tree().get_first_node_in_group("player")
+	
+	EnemyBullet.new_enemy_bullet(sprite_2d.global_position, player.global_position, get_tree().get_root().get_node("main"))
+	
+	return
 	if player and player.has_method("take_damage"):
 		player.take_damage(attack_damage)
 		
