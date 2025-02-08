@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://l46dd8pkkixa"]
+[gd_scene load_steps=35 format=3 uid="uid://l46dd8pkkixa"]
 
 [ext_resource type="Texture2D" uid="uid://c4ypmbh3x8n3d" path="res://Assets/spritesheet_tiles.png" id="1_ao1cb"]
 [ext_resource type="PackedScene" uid="uid://bjxyci4gifbyb" path="res://Scenes/player.tscn" id="2_3wrlq"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c164b6qb8ruft" path="res://Scenes/health_pickup.tscn" id="6_lr74n"]
 [ext_resource type="PackedScene" uid="uid://c36uj83ykhemk" path="res://Scenes/key_pickup.tscn" id="7_qpmsp"]
 [ext_resource type="PackedScene" uid="uid://dw2uifivxvwk3" path="res://Scenes/extract.tscn" id="8_x7c6w"]
+[ext_resource type="Script" path="res://Scripts/ring_manager.gd" id="9_4frcv"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ovm7s"]
 tile_data = PackedInt32Array(0, 1179648, 6, 65536, 1179648, 7, 1, 1245184, 6, 65537, 1245184, 7)
@@ -1167,3 +1168,6 @@ position = Vector2(-1465, -662)
 
 [node name="Extract3" parent="." instance=ExtResource("8_x7c6w")]
 position = Vector2(1764, -1476)
+
+[node name="RingManager" type="CanvasLayer" parent="."]
+script = ExtResource("9_4frcv")
