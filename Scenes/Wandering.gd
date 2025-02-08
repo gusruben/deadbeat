@@ -18,7 +18,7 @@ func physics_update(delta):
 		return
 	else: 
 		var next_position = navigation_agent_2d.get_next_path_position()
-		(owner as Zombie).move_to_position(next_position)
+		(owner as Enemy).move_to_position(next_position)
 
 func get_random_position_in_radius(wandering_radius: float) -> Vector2:
 	var global_position = owner.global_position

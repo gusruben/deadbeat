@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Zombie
+class_name Enemy
 
 var ammo_pickup_scene = preload("res://Scenes/ammo_pickup.tscn")
 var health_pickup_scene = preload("res://Scenes/health_pickup.tscn")

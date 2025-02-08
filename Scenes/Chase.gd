@@ -8,8 +8,8 @@ const CHANCE_TO_STOP_CHASING = .5
 @onready var sprite_2d = $"../../Sprite2D" as Sprite2D
 @onready var random_target_chase_update_timer = $RandomTargetChaseUpdateTimer as RandomTimer
 
-var texture_chase = preload("res://Assets/zombie_walking.png")
-var texture_default = preload("res://Assets/zombie_standing.png")
+var texture_chase = preload("res://Assets/enemy_walking.png")
+var texture_default = preload("res://Assets/enemy_standing.png")
 
 func enter(msg = {}) -> void:
 	if owner.is_queued_for_deletion():
@@ -26,14 +26,14 @@ func physics_update(delta: float):
 		set_next_chasing_target_point()
 	
 	var next_position = navigation_agent_2d.get_next_path_position()
-	(owner as Zombie).move_to_position(next_position)
+	(owner as Enemy).move_to_position(next_position)
 
 func try_to_stop_chasing() -> bool:
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
 		return true
 	var player_position = player.global_position
-	var distance_to_player = (owner as Zombie).global_position.distance_to(player_position)
+	var distance_to_player = (owner as Enemy).global_position.distance_to(player_position)
 	if distance_to_player > DISTANCE_TO_STOP_CHASING && randf() > CHANCE_TO_STOP_CHASING:
 		stop_chasing()
 		return true

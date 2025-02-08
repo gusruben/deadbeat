@@ -9,8 +9,8 @@ var time_elapsed: float = 0
 var time_between_attacks 
 
 func _ready():
-	attack_damage = (owner as Zombie).attack_damage
-	time_between_attacks = 0.3 + 1 / (owner as Zombie).attack_speed
+	attack_damage = (owner as Enemy).attack_damage
+	time_between_attacks = 0.3 + 1 / (owner as Enemy).attack_speed
 
 func enter(msg = {}):
 	attack()

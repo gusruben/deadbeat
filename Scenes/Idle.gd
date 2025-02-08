@@ -9,8 +9,8 @@ var rotation_degrees: float = 0
 var allow_rotation = true
 
 func enter(msg = {}) -> void:
-	(owner as Zombie).velocity = Vector2.ZERO
-	rotation_speed = (owner as Zombie).rotation_speed
+	(owner as Enemy).velocity = Vector2.ZERO
+	rotation_speed = (owner as Enemy).rotation_speed
 	idle_timer.setup()
 	allow_rotation = true
 	rotation_timer.setup()

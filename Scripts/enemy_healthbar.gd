@@ -1,6 +1,6 @@
 extends ProgressBar
 
-class_name ZombieLifeBar
+class_name EnemyHealthbar
 
 @onready var health_system = $"../HealthSystem" as HealthSystem
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://dmsnvoi6jecmu"]
 
-[ext_resource type="Texture2D" uid="uid://57u6c4shgvir" path="res://Assets/zombie_standing.png" id="1_o0ssw"]
-[ext_resource type="Script" path="res://Scripts/zombie_enemy.gd" id="1_y1cks"]
-[ext_resource type="Script" path="res://Scripts/zombie_life_bar.gd" id="3_dbmbk"]
+[ext_resource type="Texture2D" uid="uid://57u6c4shgvir" path="res://Assets/enemy_standing.png" id="1_o0ssw"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_y1cks"]
+[ext_resource type="Script" path="res://Scripts/enemy_healthbar.gd" id="3_dbmbk"]
 [ext_resource type="Script" path="res://Scripts/state_machine.gd" id="3_eh4li"]
 [ext_resource type="Script" path="res://Scenes/Idle.gd" id="4_u06qi"]
 [ext_resource type="Script" path="res://Scripts/random_timer.gd" id="5_ii8wk"]

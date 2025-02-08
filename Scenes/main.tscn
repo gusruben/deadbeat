@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c4ypmbh3x8n3d" path="res://Assets/spritesheet_tiles.png" id="1_ao1cb"]
 [ext_resource type="PackedScene" uid="uid://bjxyci4gifbyb" path="res://Scenes/player.tscn" id="2_3wrlq"]
-[ext_resource type="PackedScene" uid="uid://dmsnvoi6jecmu" path="res://Scenes/zombie_enemy.tscn" id="2_b0pai"]
+[ext_resource type="PackedScene" uid="uid://dmsnvoi6jecmu" path="res://Scenes/enemy.tscn" id="2_b0pai"]
 [ext_resource type="PackedScene" uid="uid://bshkyyfn6knhd" path="res://Scenes/player_ui.tscn" id="3_km44g"]
 [ext_resource type="PackedScene" uid="uid://bw58hbvgrukc" path="res://Scenes/ammo_pickup.tscn" id="4_ru2s2"]
 [ext_resource type="PackedScene" uid="uid://c164b6qb8ruft" path="res://Scenes/health_pickup.tscn" id="6_lr74n"]

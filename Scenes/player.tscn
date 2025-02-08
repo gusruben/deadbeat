@@ -25,7 +25,8 @@ script = ExtResource("3_k0xct")
 [node name="ShootingSystem" type="Marker2D" parent="."]
 position = Vector2(25.761, 0.164909)
 script = ExtResource("4_881yo")
-max_ammo = 128
-total_ammo = 128
+max_ammo = 77
+total_ammo = 77
+magazine_size = 7
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
