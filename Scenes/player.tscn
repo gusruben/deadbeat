@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjxyci4gifbyb"]
+[gd_scene load_steps=6 format=3 uid="uid://bjxyci4gifbyb"]
 
 [ext_resource type="Texture2D" uid="uid://d0iq57did5p4r" path="res://Assets/Scharacter.png" id="1_0ic5a"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_36n2m"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_k0xct"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="3_o00ra"]
 [ext_resource type="Script" path="res://Scripts/shooting_system.gd" id="4_881yo"]
 
 [node name="Player" type="CharacterBody2D"]
@@ -14,6 +15,7 @@ position = Vector2(14, 0)
 texture = ExtResource("1_0ic5a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_o00ra")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(2, 1)

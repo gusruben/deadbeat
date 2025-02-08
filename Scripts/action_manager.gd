@@ -18,7 +18,6 @@ func _ready() -> void:
 func set_action(action: Actions):
 	# if the player just missed a beat, let them trigger it now (a little late)
 	# rather than waiting until next beat
-	print(beat_manager.elapsed_time)
 	if  beat_manager.elapsed_time <= grace_period && !actioned_last_beat:
 		trigger_action(action)
 	else:

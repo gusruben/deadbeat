@@ -14,7 +14,7 @@ var before_beat_triggered = false # prevents it triggering more than once per be
 var bgm = preload("res://Assets/Audio/loop.wav")
 
 func _ready() -> void:
-	music_player.volume_db = -25
+	music_player.volume_db = -50
 	add_child(music_player)
 	music_player.stream = bgm
 	music_player.play()

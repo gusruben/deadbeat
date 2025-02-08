@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var Ring = preload("res://Scenes/ring.tscn")
+@onready var camera = $"/root/ActionManager".player.get_node("Camera2D")
 var sec_per_beat: float
 @export var rings_at_once = 2  
 var wrapper: Node2D # wrapper element for all the rings, so it can be positioned
@@ -17,7 +18,7 @@ func _ready():
 	wrapper.add_child(marker)
 
 func _process(_delta):
-	wrapper.position = get_viewport().get_visible_rect().size / 2
+	wrapper.position = (get_viewport().get_visible_rect().size / 2) - camera.offset
 
 func spawn_ring():
 	var ring = Ring.instantiate()
