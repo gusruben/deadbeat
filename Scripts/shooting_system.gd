@@ -13,6 +13,7 @@ signal ammo_added(total_ammo: int)
 @onready var bullet_scene = preload("res://Scenes/bullet.tscn")
 var audio_player: AudioStreamPlayer2D
 
+var last_reload = 0
 var reloading = false
 
 var shoot_sounds = [
@@ -59,6 +60,7 @@ func reload():
 	audio_player.volume_db = -10
 	audio_player.stream = reload_sound_1
 	audio_player.play()
+	last_reload = Time.get_ticks_msec()
 	reloading = true
 	
 func shoot():
@@ -88,7 +90,9 @@ func on_ammo_pickup():
 	ammo_added.emit(total_ammo)
 	
 func _before_beat():
-	if reloading:
+	# if someone reloads right before a beat, it will sometimes not play the second half of the
+	# reload sound; this fixes that by waiting 150ms before any logic for playing that sound can run
+	if reloading && Time.get_ticks_msec() - last_reload > 150:
 		reloading = false
 		# play second half of reloading noise
 		audio_player.volume_db = -10

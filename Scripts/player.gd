@@ -41,7 +41,6 @@ func _physics_process(delta):
 	
 	if is_dashing:
 		dash_timer += delta
-		print(dash_timer)
 		speed = dash_speed
 		if dash_timer > dash_length:
 			is_dashing = false
