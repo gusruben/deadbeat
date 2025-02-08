@@ -28,7 +28,10 @@ script = ExtResource("4_881yo")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 light_mask = 2
-position = Vector2(-15, 0)
+position = Vector2(-9, 0)
 blend_mode = 2
 texture = ExtResource("7_4bntq")
 texture_scale = 2.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+visible = false
