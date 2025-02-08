@@ -5,6 +5,7 @@ class_name Player
 @onready var health_system = $HealthSystem as HealthSystem
 @onready var shooting_system = $ShootingSystem as ShootingSystem
 @onready var audio_player = $AudioStreamPlayer2D
+@onready var action_manager = $"/root/ActionManager"
 
 @export var damage_per_bullet = 5
 @export var player_ui: PlayerUI
@@ -21,6 +22,8 @@ var is_dashing = false
 var dash_timer = 0
 
 func _ready():
+	action_manager.player = self
+	
 	player_ui.set_life_bar_max_value(health_system.base_health)
 	player_ui.set_max_ammo(shooting_system.magazine_size)
 	player_ui.set_ammo_left(shooting_system.max_ammo)
@@ -66,7 +69,7 @@ func _input(event):
 	if Input.is_action_pressed("move_right"):
 		movement_direction.x += 1
 	if Input.is_action_pressed("dash"):
-		dash()
+		action_manager.set_action(action_manager.Actions.DASH)
 
 	angle = (get_global_mouse_position() - global_position).angle()
 
