@@ -5,7 +5,7 @@ extends Node
 enum Actions { NONE, SHOOT, RELOAD, DASH }
 var current_action = Actions.NONE
 var actioned_last_beat = false # keeps track of if there was an action this past beat, so you can't use the grace period to take a second action
-@export var grace_period = 0.1 # grace period (in seconds) after you miss a beat to still act on that beat
+@export var grace_period = 0.05 # grace period (in seconds) after you miss a beat to still act on that beat
 
 var player: CharacterBody2D
 var shooting_system: Marker2D
