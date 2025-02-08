@@ -1171,3 +1171,24 @@ position = Vector2(1764, -1476)
 
 [node name="RingManager" type="CanvasLayer" parent="."]
 script = ExtResource("9_4frcv")
+
+[node name="ZombieEnemy3" parent="." instance=ExtResource("2_b0pai")]
+position = Vector2(-189, 111)
+
+[node name="ZombieEnemy4" parent="." instance=ExtResource("2_b0pai")]
+position = Vector2(-1085, 371)
+
+[node name="ZombieEnemy5" parent="." instance=ExtResource("2_b0pai")]
+position = Vector2(-570, -210)
+
+[node name="ZombieEnemy6" parent="." instance=ExtResource("2_b0pai")]
+position = Vector2(1255, 365)
+
+[node name="ZombieEnemy7" parent="." instance=ExtResource("2_b0pai")]
+position = Vector2(1765, -213)
+
+[node name="ZombieEnemy8" parent="." instance=ExtResource("2_b0pai")]
+position = Vector2(-105, -797)
+
+[node name="ZombieEnemy9" parent="." instance=ExtResource("2_b0pai")]
+position = Vector2(1480, -857)
