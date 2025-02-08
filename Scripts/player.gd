@@ -6,9 +6,8 @@ class_name Player
 @onready var shooting_system = $ShootingSystem as ShootingSystem
 
 @export var damage_per_bullet = 5
-
 @export var player_ui: PlayerUI
-@export var speed = 300
+@export var speed = 400  # Increased speed here
 @export var rotation_speed = 5
 
 var movement_direction: Vector2 = Vector2.ZERO
@@ -26,6 +25,10 @@ func _ready():
 	health_system.died.connect(on_died)
 
 func _physics_process(delta):
+	# Normalize movement direction to avoid diagonal speed increase
+	if movement_direction.length() > 0:
+		movement_direction = movement_direction.normalized()
+	
 	velocity = movement_direction * speed
 	move_and_slide()
 	
@@ -33,17 +36,17 @@ func _physics_process(delta):
 		global_rotation = lerp_angle(global_rotation, angle, delta * rotation_speed)
 
 func _input(event):
-	if Input.is_action_pressed("move_backwards"):
-		movement_direction = Vector2.DOWN
-	elif Input.is_action_pressed("move_forward"):
-		movement_direction = Vector2.UP
-	elif Input.is_action_pressed("move_left"):
-		movement_direction = Vector2.LEFT
-	elif Input.is_action_pressed("move_right"):
-		movement_direction = Vector2.RIGHT
-	else:
-		movement_direction = Vector2.ZERO
+	movement_direction = Vector2.ZERO
 	
+	if Input.is_action_pressed("move_forward"):
+		movement_direction.y -= 1
+	if Input.is_action_pressed("move_backwards"):
+		movement_direction.y += 1
+	if Input.is_action_pressed("move_left"):
+		movement_direction.x -= 1
+	if Input.is_action_pressed("move_right"):
+		movement_direction.x += 1
+
 	angle = (get_global_mouse_position() - global_position).angle()
 
 func take_damage(damage: int):
@@ -51,15 +54,12 @@ func take_damage(damage: int):
 	player_ui.update_life_bar_value(health_system.current_health)
 
 func on_shot(ammo_in_magazine: int):
-	
 	player_ui.bullet_shot(ammo_in_magazine)
 
 func on_reload(ammo_in_magazine: int, ammo_left: int):
-
 	player_ui.gun_reloaded(ammo_in_magazine, ammo_left)
 
 func on_ammo_pickup():
-	
 	shooting_system.on_ammo_pickup()
 
 func on_ammo_added(total_ammo: int):
@@ -73,10 +73,9 @@ func on_key_pickup():
 	has_key = true
 	player_ui.on_key_pickup()
 
-
 func update_extract_timer(time_left: float):
 	player_ui.update_extract_timer(time_left)
-	
+
 func hide_extract_countdown():
 	player_ui.hide_extract_countdown()
 

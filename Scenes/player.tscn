@@ -1,37 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjxyci4gifbyb"]
+[gd_scene load_steps=5 format=3 uid="uid://bjxyci4gifbyb"]
 
 [ext_resource type="Texture2D" uid="uid://d0iq57did5p4r" path="res://Assets/Scharacter.png" id="1_0ic5a"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_36n2m"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_k0xct"]
 [ext_resource type="Script" path="res://Scripts/shooting_system.gd" id="4_881yo"]
-[ext_resource type="Texture2D" uid="uid://cdviujlby0sks" path="res://Assets/visibility_mask_1.png" id="7_4bntq"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 64
 script = ExtResource("1_36n2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(14, 0)
 texture = ExtResource("1_0ic5a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-12, 1)
+position = Vector2(2, 1)
 polygon = PackedVector2Array(-12, -22, -2, -22, 2, -22, 8, -22, 10, -22, 12, -22, 14, -22, 16, -22, 19, -22, 19, -17, 19, -11, 19, -8, 19, -5, 19, -2, 19, 2, 19, 8, 19, 13, 19, 21, 13, 21, 1, 21, -11, 21, -25, 21, -25, -22)
 
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("3_k0xct")
 
 [node name="ShootingSystem" type="Marker2D" parent="."]
+visible = false
 position = Vector2(25.761, 0.164909)
 script = ExtResource("4_881yo")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-light_mask = 2
-position = Vector2(-9, 0)
-blend_mode = 2
-texture = ExtResource("7_4bntq")
-texture_scale = 2.0
-
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-visible = false
