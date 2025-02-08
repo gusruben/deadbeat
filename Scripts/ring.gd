@@ -13,6 +13,9 @@ var marker = false
 @export var end_scale = 3.0
 
 func _ready():
+	centered = true
+	offset = Vector2.ZERO
+	
 	if marker:
 		scale = Vector2.ONE * end_scale
 		modulate.v = 0.5

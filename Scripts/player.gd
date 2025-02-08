@@ -4,15 +4,21 @@ class_name Player
 
 @onready var health_system = $HealthSystem as HealthSystem
 @onready var shooting_system = $ShootingSystem as ShootingSystem
+@onready var audio_player = $AudioStreamPlayer2D
 
 @export var damage_per_bullet = 5
 @export var player_ui: PlayerUI
-@export var speed = 400  # Increased speed here
+@export var base_speed = 400
+@onready var speed = base_speed
 @export var rotation_speed = 5
+@export var dash_length = 0.2
+@export var dash_speed = 1000
 
 var movement_direction: Vector2 = Vector2.ZERO
 var angle
 var has_key = false
+var is_dashing = false
+var dash_timer = 0
 
 func _ready():
 	player_ui.set_life_bar_max_value(health_system.base_health)
@@ -23,11 +29,23 @@ func _ready():
 	shooting_system.gun_reload.connect(on_reload)
 	shooting_system.ammo_added.connect(on_ammo_added)
 	health_system.died.connect(on_died)
+	
+	audio_player.volume_db = -12.5
+	# currently there are no other sounds
+	audio_player.stream = load("res://Assets/Audio/dash.wav")
 
 func _physics_process(delta):
 	# Normalize movement direction to avoid diagonal speed increase
 	if movement_direction.length() > 0:
 		movement_direction = movement_direction.normalized()
+	
+	if is_dashing:
+		dash_timer += delta
+		print(dash_timer)
+		speed = dash_speed
+		if dash_timer > dash_length:
+			is_dashing = false
+			speed = base_speed
 	
 	velocity = movement_direction * speed
 	move_and_slide()
@@ -36,6 +54,8 @@ func _physics_process(delta):
 		global_rotation = lerp_angle(global_rotation, angle, delta * rotation_speed)
 
 func _input(event):
+	if is_dashing: return
+	
 	movement_direction = Vector2.ZERO
 	
 	if Input.is_action_pressed("move_forward"):
@@ -46,8 +66,15 @@ func _input(event):
 		movement_direction.x -= 1
 	if Input.is_action_pressed("move_right"):
 		movement_direction.x += 1
+	if Input.is_action_pressed("dash"):
+		dash()
 
 	angle = (get_global_mouse_position() - global_position).angle()
+
+func dash():
+	audio_player.play()
+	dash_timer = 0
+	is_dashing = true
 
 func take_damage(damage: int):
 	health_system.take_damage(damage)
