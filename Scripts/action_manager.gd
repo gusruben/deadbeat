@@ -4,7 +4,7 @@ extends Node
 
 enum Actions { NONE, SHOOT, RELOAD, DASH }
 var current_action = Actions.NONE
-var triggered_early = false
+var actioned_last_beat = false # keeps track of if there was an action this past beat, so you can't use the grace period to take a second action
 @export var grace_period = 0.1 # grace period (in seconds) after you miss a beat to still act on that beat
 
 var player: CharacterBody2D
@@ -19,11 +19,12 @@ func set_action(action: Actions):
 	# if the player just missed a beat, let them trigger it now (a little late)
 	# rather than waiting until next beat
 	print(beat_manager.elapsed_time)
-	if  beat_manager.elapsed_time <= grace_period && !triggered_early:
-		triggered_early = true
+	if  beat_manager.elapsed_time <= grace_period && !actioned_last_beat:
 		trigger_action(action)
 	else:
 		current_action = action
+		
+	actioned_last_beat = true
 
 func trigger_action(action: Actions):
 	match action:
@@ -35,11 +36,12 @@ func trigger_action(action: Actions):
 			player.dash()
 
 func _on_beat():
-	trigger_action(current_action)
+	if current_action:
+		trigger_action(current_action)
+		current_action = Actions.NONE
+	else:
+		actioned_last_beat = false
 	
-	triggered_early = false
-	current_action = Actions.NONE
-
 
 func _process(delta: float) -> void:
 	pass
