@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var Ring = preload("res://Scenes/ring.tscn")
 var sec_per_beat: float
-var rings_at_once = 2  
+@export var rings_at_once = 2  
 var wrapper: Node2D # wrapper element for all the rings, so it can be positioned
 
 func _ready():

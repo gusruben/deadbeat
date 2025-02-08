@@ -25,3 +25,4 @@ script = ExtResource("3_k0xct")
 [node name="ShootingSystem" type="Marker2D" parent="."]
 position = Vector2(25.761, 0.164909)
 script = ExtResource("4_881yo")
+total_ammo = 128

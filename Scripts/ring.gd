@@ -7,10 +7,10 @@ var speed = 1.0 # set by RingManager
 # this is for the central ring that acts as a marker, only 1 will have this set to true
 var marker = false
 
-var fade_end = 1 # how much of the way through the animation the circle should stop fading
+@export var fade_end = 1 # how much of the way through the animation the circle should stop fading
 
-var start_scale = 8.0
-var end_scale = 3.0
+@export var start_scale = 8.0
+@export var end_scale = 3.0
 
 func _ready():
 	if marker:
