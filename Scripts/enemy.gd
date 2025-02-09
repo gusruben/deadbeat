@@ -34,7 +34,7 @@ var health_pickup_scene = preload("res://Scenes/health_pickup.tscn")
 var current_speed 
 
 func _ready():
-	var navigation_map = get_tree().get_first_node_in_group("tilemap").get_navigation_map(0)
+	var navigation_map = get_tree().get_first_node_in_group("tilemap").get_navigation_map()
 	NavigationServer2D.agent_set_map(navigation_agent_2d.get_rid(), navigation_map)
 	navigation_agent_2d.set_navigation_map(navigation_map)
 	current_speed = wandering_speed
