@@ -13,9 +13,7 @@ static func new_enemy_bullet(origin: Vector2, target: Vector2, src: Node) -> Ene
 	bullet.position = origin
 	
 	src.add_child(bullet)
-	
-	print(src, bullet)
-	
+		
 	return bullet
 
 func _process(delta: float) -> void:

@@ -9,8 +9,8 @@ var marker = false
 
 @export var fade_end = 1 # how much of the way through the animation the circle should stop fading
 
-@export var start_scale = 8.0
-@export var end_scale = 3.0
+@export var start_scale = 0.5
+@export var end_scale = 0.2
 
 func _ready():
 	centered = true

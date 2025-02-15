@@ -20,7 +20,7 @@ var health_pickup_scene = preload("res://Scenes/health_pickup.tscn")
 
 @export_group("Scanning for player")
 @export var angle_cone_of_vision = 90
-@export var max_vision_distance = 1800
+@export var max_vision_distance = 1100
 @export var angle_between_rays = 30
 
 @export_group("Attack")
@@ -38,6 +38,7 @@ func _ready():
 	NavigationServer2D.agent_set_map(navigation_agent_2d.get_rid(), navigation_map)
 	navigation_agent_2d.set_navigation_map(navigation_map)
 	current_speed = wandering_speed
+	navigation_agent_2d.debug_enabled = false
 	
 	health_system.died.connect(on_died)
 	
