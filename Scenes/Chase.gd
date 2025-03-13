@@ -12,8 +12,8 @@ var texture_chase = preload("res://Assets/enemy_walking.png")
 var texture_default = preload("res://Assets/enemy_standing.png")
 
 func enter(msg = {}) -> void:
-	if owner.is_queued_for_deletion():
-		return 
+	if !owner || owner.is_queued_for_deletion():
+		return
 		
 	sprite_2d.texture = texture_chase
 	owner.current_speed = owner.chasing_speed

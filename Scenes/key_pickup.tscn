@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c36uj83ykhemk"]
 
-[ext_resource type="Script" path="res://Scripts/key_pickup.gd" id="1_a4o28"]
+[ext_resource type="Script" uid="uid://behai2g1v0ji6" path="res://Scripts/key_pickup.gd" id="1_a4o28"]
 [ext_resource type="Texture2D" uid="uid://crejfhgcj8jga" path="res://Assets/key.png" id="1_g5ttk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ua3ik"]

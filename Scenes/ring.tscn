@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjr7dbgh1a03a"]
 
-[ext_resource type="Texture2D" uid="uid://f4yr3kff15yl" path="res://Assets/ring.png" id="1_4on3c"]
-[ext_resource type="Script" path="res://Scripts/ring.gd" id="2_afv6a"]
+[ext_resource type="Texture2D" uid="uid://bjgpmlxi2gjgu" path="res://Assets/ring.png" id="1_4on3c"]
+[ext_resource type="Script" uid="uid://b4oafstfc3ct5" path="res://Scripts/ring.gd" id="2_afv6a"]
 
 [node name="Ring" type="Sprite2D"]
 scale = Vector2(3, 3)

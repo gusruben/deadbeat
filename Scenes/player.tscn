@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjxyci4gifbyb"]
 
 [ext_resource type="Texture2D" uid="uid://d0iq57did5p4r" path="res://Assets/Scharacter.png" id="1_0ic5a"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_36n2m"]
-[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_k0xct"]
-[ext_resource type="Script" path="res://Scripts/camera.gd" id="3_o00ra"]
-[ext_resource type="Script" path="res://Scripts/shooting_system.gd" id="4_881yo"]
+[ext_resource type="Script" uid="uid://dvwh5mp0a4rrq" path="res://Scripts/player.gd" id="1_36n2m"]
+[ext_resource type="Script" uid="uid://davdebiw0yteq" path="res://Scripts/health_system.gd" id="3_k0xct"]
+[ext_resource type="Script" uid="uid://jxxhy3p4f3vk" path="res://Scripts/camera.gd" id="3_o00ra"]
+[ext_resource type="Script" uid="uid://boaw3rlwucqme" path="res://Scripts/shooting_system.gd" id="4_881yo"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 64

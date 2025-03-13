@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7wyk2xl4ro7j"]
 
-[ext_resource type="Script" path="res://Scenes/enemy_bullet.gd" id="1_3sgft"]
+[ext_resource type="Script" uid="uid://cj42ut4crwmpb" path="res://Scenes/enemy_bullet.gd" id="1_3sgft"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rk2o7"]
 size = Vector2(30, 30)

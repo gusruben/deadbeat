@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw2uifivxvwk3"]
 
-[ext_resource type="Script" path="res://Scripts/random_timer.gd" id="1_mtpe3"]
-[ext_resource type="Script" path="res://Scripts/extract.gd" id="1_tpceg"]
+[ext_resource type="Script" uid="uid://cnvj15a6sbgw7" path="res://Scripts/random_timer.gd" id="1_mtpe3"]
+[ext_resource type="Script" uid="uid://bgeoxnxrqwcy3" path="res://Scripts/extract.gd" id="1_tpceg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2jui"]
 size = Vector2(124, 98)

@@ -114,4 +114,4 @@ func extract():
 
 func on_died():
 	player_ui.on_game_over(true)
-	queue_free()
+	#queue_free()

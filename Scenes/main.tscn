@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c164b6qb8ruft" path="res://Scenes/health_pickup.tscn" id="6_lr74n"]
 [ext_resource type="PackedScene" uid="uid://c36uj83ykhemk" path="res://Scenes/key_pickup.tscn" id="7_qpmsp"]
 [ext_resource type="PackedScene" uid="uid://dw2uifivxvwk3" path="res://Scenes/extract.tscn" id="8_x7c6w"]
-[ext_resource type="Script" path="res://Scripts/ring_manager.gd" id="9_4frcv"]
+[ext_resource type="Script" uid="uid://dfdfdux6imfp5" path="res://Scripts/ring_manager.gd" id="9_4frcv"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ovm7s"]
 tile_data = PackedInt32Array(0, 1179648, 6, 65536, 1179648, 7, 1, 1245184, 6, 65537, 1245184, 7)
@@ -1139,10 +1139,7 @@ layer_3/name = "on _decotarion"
 layer_3/tile_data = PackedInt32Array(-786413, 1572864, 16, 720894, 1179648, 19, 720895, 1245184, 19, 589808, 1245184, 11, 327674, 1376256, 10, -983042, 917504, 18, -983041, 983040, 18, -1048576, 1048576, 18, -1114109, 327680, 16, -1048573, 327680, 16, -786417, 262144, 18, -720881, 262144, 18, -655345, 262144, 18, 393204, 1376256, 11, 393205, 1310720, 11, 65564, 1507328, 65541, 131100, 1572864, 65541, -65508, 1638400, 4, 20, 1638400, 4, 655347, 1310720, 11)
 
 [node name="ZombieEnemy" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(-285, 563)
-
-[node name="ZombieEnemy2" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(554, -798)
+position = Vector2(286, -48)
 
 [node name="AmmoPickup" parent="." instance=ExtResource("4_ru2s2")]
 position = Vector2(313.016, 369.77)
@@ -1171,24 +1168,3 @@ position = Vector2(1764, -1476)
 
 [node name="RingManager" type="CanvasLayer" parent="."]
 script = ExtResource("9_4frcv")
-
-[node name="ZombieEnemy3" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(-189, 111)
-
-[node name="ZombieEnemy4" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(-1085, 371)
-
-[node name="ZombieEnemy5" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(-570, -210)
-
-[node name="ZombieEnemy6" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(1255, 365)
-
-[node name="ZombieEnemy7" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(1765, -213)
-
-[node name="ZombieEnemy8" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(-105, -797)
-
-[node name="ZombieEnemy9" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(1480, -857)
