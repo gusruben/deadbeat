@@ -5,12 +5,10 @@ class_name Enemy
 var ammo_pickup_scene = preload("res://Scenes/ammo_pickup.tscn")
 var health_pickup_scene = preload("res://Scenes/health_pickup.tscn")
 
-
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var vision_ray_cast_2d = $VisionRayCast2D as RayCast2D
 @onready var state_machine = $StateMachine as StateMachine
 @onready var health_system = $HealthSystem as HealthSystem
-
 
 @export_group("Locomotion")
 @export var rotation_speed: float = 2
@@ -43,7 +41,8 @@ func _ready():
 	health_system.died.connect(on_died)
 	
 func _process(delta):
-	search_for_player_with_raycast()
+	if !GameManager.paused:
+		search_for_player_with_raycast()
 
 func move_to_position(target_position: Vector2):
 	var motion = position.direction_to(target_position) * current_speed

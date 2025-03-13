@@ -22,6 +22,8 @@ func physics_update(delta):
 		time_elapsed = 0
 
 func attack():
+	if GameManager.paused:
+		return
 	var player = get_tree().get_first_node_in_group("player")
 	
 	EnemyBullet.new_enemy_bullet(sprite_2d.global_position, player.global_position, get_tree().get_root().get_node("main"))

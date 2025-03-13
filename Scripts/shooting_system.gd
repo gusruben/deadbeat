@@ -10,7 +10,6 @@ signal ammo_added(total_ammo: int)
 @export var total_ammo = 120
 @export var magazine_size = 8
 
-@onready var action_manager = $"/root/ActionManager"
 @onready var bullet_scene = preload("res://Scenes/bullet.tscn")
 var audio_player: AudioStreamPlayer2D
 
@@ -31,12 +30,12 @@ var ammo_in_magazine = 0
 var crosshair_texture = preload("res://Assets/crosshair_white-export.png")
 
 func _ready():
-	action_manager.shooting_system = self
+	ActionManager.shooting_system = self
 	
 	Input.set_custom_mouse_cursor(crosshair_texture)
 	ammo_in_magazine = magazine_size
 	
-	get_node("/root/BeatManager").before_beat.connect(_before_beat)
+	BeatManager.before_beat.connect(_before_beat)
 	
 	# need to create it dynamicall for some reason, it doesn't work otherwise
 	audio_player = AudioStreamPlayer2D.new()
@@ -44,9 +43,9 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("shoot"):
-		action_manager.set_action(action_manager.Actions.SHOOT)
+		ActionManager.set_action(ActionManager.Actions.SHOOT)
 	if Input.is_action_just_pressed("reload"):
-		action_manager.set_action(action_manager.Actions.RELOAD)
+		ActionManager.set_action(ActionManager.Actions.RELOAD)
 	
 func reload():
 	if total_ammo <= 0:

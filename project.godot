@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 BeatManager="*res://Scripts/beat_manager.gd"
 ActionManager="*res://Scripts/action_manager.gd"
+GameManager="*res://Scripts/game_manager.gd"
 
 [input]
 

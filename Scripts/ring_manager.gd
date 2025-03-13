@@ -1,13 +1,13 @@
 extends CanvasLayer
 
 var Ring = preload("res://Scenes/ring.tscn")
-@onready var camera = $"/root/ActionManager".player.get_node("Camera2D")
+@onready var camera = ActionManager.player.get_node("Camera2D")
 var sec_per_beat: float
 @export var rings_at_once = 2  
 var wrapper: Node2D # wrapper element for all the rings, so it can be positioned
 
 func _ready():
-	get_node("/root/BeatManager").on_beat.connect(_on_beat)
+	BeatManager.on_beat.connect(_on_beat)
 	sec_per_beat = 60.0 / BeatManager.bpm
 	
 	wrapper = Node2D.new()

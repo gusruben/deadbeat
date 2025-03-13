@@ -25,6 +25,7 @@ func _ready():
 
 func _process(delta):
 	if marker: return
+	if GameManager.paused: return
 	lifetime += delta * speed
 
 	render()
