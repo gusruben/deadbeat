@@ -58,7 +58,6 @@ func _physics_process(delta):
 
 func _input(event):
 	if is_dashing: return
-	if GameManager.paused: return
 
 	movement_direction = Vector2.ZERO
 	

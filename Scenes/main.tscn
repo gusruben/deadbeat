@@ -1,8 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://l46dd8pkkixa"]
+[gd_scene load_steps=34 format=3 uid="uid://l46dd8pkkixa"]
 
 [ext_resource type="Texture2D" uid="uid://c4ypmbh3x8n3d" path="res://Assets/spritesheet_tiles.png" id="1_ao1cb"]
 [ext_resource type="PackedScene" uid="uid://bjxyci4gifbyb" path="res://Scenes/player.tscn" id="2_3wrlq"]
-[ext_resource type="PackedScene" uid="uid://dmsnvoi6jecmu" path="res://Scenes/enemy.tscn" id="2_b0pai"]
 [ext_resource type="PackedScene" uid="uid://bshkyyfn6knhd" path="res://Scenes/player_ui.tscn" id="3_km44g"]
 [ext_resource type="PackedScene" uid="uid://bw58hbvgrukc" path="res://Scenes/ammo_pickup.tscn" id="4_ru2s2"]
 [ext_resource type="PackedScene" uid="uid://c164b6qb8ruft" path="res://Scenes/health_pickup.tscn" id="6_lr74n"]
@@ -1138,13 +1137,11 @@ layer_2/tile_data = PackedInt32Array(524287, 458752, 7, 589812, 458752, 7, 45873
 layer_3/name = "on _decotarion"
 layer_3/tile_data = PackedInt32Array(-786413, 1572864, 16, 720894, 1179648, 19, 720895, 1245184, 19, 589808, 1245184, 11, 327674, 1376256, 10, -983042, 917504, 18, -983041, 983040, 18, -1048576, 1048576, 18, -1114109, 327680, 16, -1048573, 327680, 16, -786417, 262144, 18, -720881, 262144, 18, -655345, 262144, 18, 393204, 1376256, 11, 393205, 1310720, 11, 65564, 1507328, 65541, 131100, 1572864, 65541, -65508, 1638400, 4, 20, 1638400, 4, 655347, 1310720, 11)
 
-[node name="ZombieEnemy" parent="." instance=ExtResource("2_b0pai")]
-position = Vector2(286, -48)
-
 [node name="AmmoPickup" parent="." instance=ExtResource("4_ru2s2")]
 position = Vector2(313.016, 369.77)
 
 [node name="PlayerUI" parent="." instance=ExtResource("3_km44g")]
+process_mode = 3
 
 [node name="Player" parent="." node_paths=PackedStringArray("player_ui") groups=["player"] instance=ExtResource("2_3wrlq")]
 position = Vector2(592, -39)
@@ -1168,3 +1165,12 @@ position = Vector2(1764, -1476)
 
 [node name="RingManager" type="CanvasLayer" parent="."]
 script = ExtResource("9_4frcv")
+
+[node name="SpawnPoint1" type="Marker2D" parent="." groups=["spawnpoint"]]
+position = Vector2(-416, -528)
+
+[node name="SpawnPoint2" type="Marker2D" parent="." groups=["spawnpoint"]]
+position = Vector2(733, -627)
+
+[node name="SpawnPoint3" type="Marker2D" parent="." groups=["spawnpoint"]]
+position = Vector2(767, 710)

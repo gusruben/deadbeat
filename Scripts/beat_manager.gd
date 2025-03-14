@@ -32,8 +32,7 @@ func _process(delta: float) -> void:
 	
 	if elapsed_time >= sec_per_beat:
 		elapsed_time -= sec_per_beat
-		if !GameManager.paused:
-			emit_signal("on_beat")
+		emit_signal("on_beat")
 		before_beat_triggered = false
 		
 	if elapsed_time >= sec_per_beat - before_beat_gap && !before_beat_triggered:

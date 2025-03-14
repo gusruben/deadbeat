@@ -41,8 +41,7 @@ func _ready():
 	health_system.died.connect(on_died)
 	
 func _process(delta):
-	if !GameManager.paused:
-		search_for_player_with_raycast()
+	search_for_player_with_raycast()
 
 func move_to_position(target_position: Vector2):
 	var motion = position.direction_to(target_position) * current_speed
