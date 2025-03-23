@@ -16,7 +16,7 @@ var last_song_position = 0
 var bgm = preload("res://Assets/Audio/loop.wav")
 
 func _ready() -> void:
-	music_player.volume_db = -30
+	music_player.volume_db = -20
 	add_child(music_player)
 	music_player.stream = bgm
 	music_player.play()

@@ -1,24 +1,25 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjxyci4gifbyb"]
 
-[ext_resource type="Texture2D" uid="uid://d0iq57did5p4r" path="res://Assets/Scharacter.png" id="1_0ic5a"]
 [ext_resource type="Script" uid="uid://dvwh5mp0a4rrq" path="res://Scripts/player.gd" id="1_36n2m"]
 [ext_resource type="Script" uid="uid://davdebiw0yteq" path="res://Scripts/health_system.gd" id="3_k0xct"]
 [ext_resource type="Script" uid="uid://jxxhy3p4f3vk" path="res://Scripts/camera.gd" id="3_o00ra"]
 [ext_resource type="Script" uid="uid://boaw3rlwucqme" path="res://Scripts/shooting_system.gd" id="4_881yo"]
+[ext_resource type="Texture2D" uid="uid://7wdlgjllfn4e" path="res://Assets/player.png" id="5_fkybt"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 64
 script = ExtResource("1_36n2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(14, 0)
-texture = ExtResource("1_0ic5a")
+texture = ExtResource("5_fkybt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 0.0
 script = ExtResource("3_o00ra")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(2, 1)
+position = Vector2(1, 0)
+scale = Vector2(0.355114, 0.506469)
 polygon = PackedVector2Array(-12, -22, -2, -22, 2, -22, 8, -22, 10, -22, 12, -22, 14, -22, 16, -22, 19, -22, 19, -17, 19, -11, 19, -8, 19, -5, 19, -2, 19, 2, 19, 8, 19, 13, 19, 21, 13, 21, 1, 21, -11, 21, -25, 21, -25, -22)
 
 [node name="HealthSystem" type="Node" parent="."]

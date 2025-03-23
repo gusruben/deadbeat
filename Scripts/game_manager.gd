@@ -1,6 +1,7 @@
 extends Node
 
 
+var enemies_enabled = false
 var current_wave = 0
 var wave_enemy_counts = [2, 5, 10, 15, 20]
 var time_between_waves = 5
@@ -18,7 +19,8 @@ func _ready():
 	for spawn_point in spawn_points:
 		spawn_point_cooldowns.append(0)
 	await get_tree().create_timer(time_between_waves).timeout
-	start_wave()
+	if enemies_enabled:
+		start_wave()
 	pass
 
 func start_wave():
