@@ -6,7 +6,7 @@ var actioned_last_beat = false # keeps track of if there was an action this past
 @export var grace_period = 0.05 # grace period (in seconds) after you miss a beat to still act on that beat
 
 var player: CharacterBody2D
-var shooting_system: Marker2D
+var weapon_system: Node2D
 
 
 func _ready() -> void:
@@ -26,9 +26,9 @@ func set_action(action: Actions):
 func trigger_action(action: Actions):
 	match action:
 		Actions.SHOOT:
-			shooting_system.shoot()
+			weapon_system.shoot()
 		Actions.RELOAD:
-			shooting_system.reload()
+			weapon_system.reload()
 		Actions.DASH:
 			player.dash()
 

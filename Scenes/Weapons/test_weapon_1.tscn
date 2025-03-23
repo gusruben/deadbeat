@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbgsl1beyr6yk"]
+
+[ext_resource type="Script" uid="uid://boaw3rlwucqme" path="res://Scripts/shooting_system.gd" id="1_vwcud"]
+[ext_resource type="Texture2D" uid="uid://cyfbj4fstbku0" path="res://Assets/bullet_icon.png" id="2_pakt8"]
+
+[node name="TestWeapon1" type="Node2D"]
+
+[node name="ShootingSystem" type="Marker2D" parent="."]
+script = ExtResource("1_vwcud")
+metadata/_custom_type_script = "uid://boaw3rlwucqme"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pakt8")

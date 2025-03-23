@@ -3,10 +3,10 @@ extends CharacterBody2D
 class_name Player
 
 @onready var health_system = $HealthSystem as HealthSystem
-@onready var shooting_system = $ShootingSystem as ShootingSystem
+# @onready var shooting_system = $ShootingSystem as ShootingSystem
+@onready var weapon_system = $WeaponSystem as WeaponSystem
 @onready var audio_player = $AudioStreamPlayer2D
 
-@export var damage_per_bullet = 5
 @export var player_ui: PlayerUI
 @export var base_speed = 400
 @onready var speed = base_speed
@@ -26,13 +26,11 @@ func _ready():
 	health_system.died.connect(GameManager.on_player_death)
 	
 	player_ui.set_life_bar_max_value(health_system.base_health)
-	player_ui.set_max_ammo(shooting_system.magazine_size)
-	player_ui.set_ammo_left(shooting_system.max_ammo)
-
-	shooting_system.shot.connect(on_shot)
-	shooting_system.gun_reload.connect(on_reload)
-	shooting_system.ammo_added.connect(on_ammo_added)
 	health_system.died.connect(on_died)
+	
+	weapon_system.shot.connect(on_shot)
+	weapon_system.gun_reload.connect(on_reload)
+	weapon_system.ammo_added.connect(on_ammo_added)
 	
 	audio_player.volume_db = -12.5
 	# currently there are no other sounds
@@ -90,7 +88,7 @@ func on_reload(ammo_in_magazine: int, ammo_left: int):
 	player_ui.gun_reloaded(ammo_in_magazine, ammo_left)
 
 func on_ammo_pickup():
-	shooting_system.on_ammo_pickup()
+	weapon_system.on_ammo_pickup()
 
 func on_ammo_added(total_ammo: int):
 	player_ui.set_ammo_left(total_ammo)
