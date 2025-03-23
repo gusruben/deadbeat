@@ -1,11 +1,11 @@
 extends Node
 
 
-var enemies_enabled = false
+var enemies_enabled = true
 var current_wave = 0
-var wave_enemy_counts = [2, 5, 10, 15, 20]
-var time_between_waves = 5
-var enemy_spawn_delay = 3 # min between enemy spawns
+var wave_enemy_counts = [1, 2, 5, 10, 15, 20]
+var time_between_waves = 8
+var enemy_spawn_delay = 3 # min delay between enemy spawns
 var enemy_spawn_variance = 5 # max variance in enemy spawn time
 
 # get everything in the spawnpoint group
@@ -18,7 +18,8 @@ var player: CharacterBody2D
 func _ready():
 	for spawn_point in spawn_points:
 		spawn_point_cooldowns.append(0)
-	await get_tree().create_timer(time_between_waves).timeout
+	#await get_tree().create_timer(time_between_waves).timeout
+	await get_tree().create_timer(1).timeout
 	if enemies_enabled:
 		start_wave()
 	pass

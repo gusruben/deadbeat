@@ -29,4 +29,3 @@ script = ExtResource("3_k0xct")
 
 [node name="WeaponSystem" type="Node2D" parent="."]
 script = ExtResource("5_x3wgy")
-metadata/_custom_type_script = "uid://fs8q2xvr3ei8"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://l46dd8pkkixa"]
+[gd_scene load_steps=10 format=3 uid="uid://l46dd8pkkixa"]
 
 [ext_resource type="Texture2D" uid="uid://ymfeqa1v0val" path="res://Assets/map-bg.png" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bjxyci4gifbyb" path="res://Scenes/player.tscn" id="2_3wrlq"]
@@ -9,6 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://c36uj83ykhemk" path="res://Scenes/key_pickup.tscn" id="7_qpmsp"]
 [ext_resource type="Script" uid="uid://dfdfdux6imfp5" path="res://Scripts/ring_manager.gd" id="9_4frcv"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_344ge"]
+vertices = PackedVector2Array(-243, -85, -267, -93, -180, -95, -131, -95, -217, -85, -68, -4, 89.6172, -18.3984, 139.633, 4.78125, -134, 11, -220, -114, -246, -114, 241.672, -19, 211, 4, 155, -8.39844, 155, -28.5078, 218, -25, 130, -191.797, 173.68, -160.422, 164.477, -152.75, 90, -160.5, 90, -182, 105, -186.797, 260, -192, 260, -60, 218, -60, 211, -117.344, 211, -142.773, 252.5, -196, -122, -34, -122, -69, -115, -42, -115, -4, -131, -144, -126, -100, -126, -70, -267, -127, -246, -180, 204.508, -105.992, 82, -145.5, 158, -143.031, 82, -106, -180, -144, -220, -180, -189, -178, -272, 19, -245, -4, -209, -22, -209, 11, -228, 28, -254, 28, 69, -59.6406, -68, -42, 194.758, -99.4922, 205.742, -151.539, 86.8594, -257, 105, -238.859, 64.4062, -182, -18, -197, -18, -237, -149, -257, -78.3594, -237, -98, -227.18, -164, -242.711, 211, 132, 185, 154, -228, 97, -157, 40, -73, -70, -73, -100, 52, -106, 69, -78.5938, -189, -69, -190, -69, 130, -196, 195.297, -160.492, 183.883, -162.117, 260, -25, 260, -19, 185.117, -97.8828, 174.344, -99.4219, 109.461, -48.6328, 164.492, -105.992, 90.9375, -88, 158, -117.344, -189, -34, -190, -34, -217, -69, -272, -4, -182, 11, -182, 40, -157, 11, -254, 61, -295, 61, -300, 19, 259, 132, 259, 154, 185, 216, 149, 216, 146, 212, -70.1406, 212, -74.1406, 216, -205.859, 116, -326.859, 103, -342, 103, -342, -199, -325, -127, -325, -93, -189, -199, -65.6484, -197, 52, -161.828, -75.6406, -192, -84.1406, -192, -164, -178, -98, -205.859, -99, 216, -102, 212, -134, -22, -243, -34, -245, -39, -300, -39, -217.141, 116, -245.141, 144, -285.859, 144, -295, 97, -109.859, 212)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 2, 1, 10), PackedInt32Array(11, 12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25, 26, 27), PackedInt32Array(28, 29, 30, 31), PackedInt32Array(3, 32, 33, 34), PackedInt32Array(10, 1, 35, 36), PackedInt32Array(37, 25, 24), PackedInt32Array(38, 19, 18, 39, 40), PackedInt32Array(41, 2, 9, 42, 43), PackedInt32Array(44, 45, 46, 47, 48, 49), PackedInt32Array(50, 6, 5, 51), PackedInt32Array(14, 52, 37, 24, 15), PackedInt32Array(27, 26, 53), PackedInt32Array(54, 55, 21, 20, 56, 57, 58), PackedInt32Array(59, 54, 58, 60), PackedInt32Array(59, 60, 61, 62), PackedInt32Array(12, 63, 64, 65, 66), PackedInt32Array(67, 68, 69, 70, 50, 51), PackedInt32Array(67, 51, 30, 29), PackedInt32Array(34, 67, 29, 71), PackedInt32Array(4, 3, 34, 71, 72), PackedInt32Array(16, 73, 27, 74, 75), PackedInt32Array(15, 76, 77, 11), PackedInt32Array(78, 52, 14), PackedInt32Array(79, 78, 14, 80), PackedInt32Array(81, 79, 80, 82), PackedInt32Array(83, 81, 82, 40), PackedInt32Array(71, 84, 85, 72), PackedInt32Array(72, 86, 4), PackedInt32Array(44, 87, 45), PackedInt32Array(48, 47, 88, 89, 65), PackedInt32Array(66, 90, 8), PackedInt32Array(44, 49, 91, 92, 93), PackedInt32Array(63, 94, 95, 64), PackedInt32Array(64, 96, 97, 98), PackedInt32Array(65, 64, 98, 99), PackedInt32Array(65, 99, 100, 101), PackedInt32Array(102, 103, 104, 105, 106), PackedInt32Array(104, 107, 43, 42), PackedInt32Array(27, 53, 74), PackedInt32Array(16, 75, 17), PackedInt32Array(108, 57, 56, 109, 68, 33, 32, 110), PackedInt32Array(40, 39, 83), PackedInt32Array(40, 82, 70, 69), PackedInt32Array(109, 69, 68), PackedInt32Array(111, 110, 32), PackedInt32Array(112, 113, 111, 32, 41), PackedInt32Array(112, 62, 61, 113), PackedInt32Array(43, 112, 41), PackedInt32Array(104, 42, 36), PackedInt32Array(104, 36, 35, 105), PackedInt32Array(100, 114, 115), PackedInt32Array(7, 13, 12), PackedInt32Array(8, 7, 12, 66), PackedInt32Array(31, 5, 8), PackedInt32Array(31, 8, 116, 28), PackedInt32Array(84, 28, 116, 46), PackedInt32Array(85, 84, 46), PackedInt32Array(117, 85, 46, 45), PackedInt32Array(117, 45, 118, 0), PackedInt32Array(1, 0, 118, 119, 106), PackedInt32Array(89, 66, 65), PackedInt32Array(65, 120, 121, 122, 102, 123), PackedInt32Array(115, 124, 101), PackedInt32Array(100, 115, 101), PackedInt32Array(65, 101, 120), PackedInt32Array(92, 123, 102, 106, 93), PackedInt32Array(119, 93, 106)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-375, -256, -229, -253, -201, -284, 138, -280, 133, -225, 294, -218, 299, 189, 211, 187, 211, 245, -127, 245, -214, 159, -251, 179, -308, 176, -345, 139, -379, 145)])
+parsed_geometry_type = 1
+source_geometry_mode = 2
+
 [node name="main" type="Node"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -18,7 +25,10 @@ texture = ExtResource("1_6bp64")
 [node name="MapObjects" type="Sprite2D" parent="."]
 texture = ExtResource("2_344ge")
 
-[node name="MapCollision" type="StaticBody2D" parent="."]
+[node name="MapCollision" type="StaticBody2D" parent="." groups=["navigation_polygon_source_geometry_group"]]
+visible = false
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapCollision"]
 position = Vector2(-57, -217)
@@ -71,6 +81,9 @@ polygon = PackedVector2Array(-241, 154, -241, 154, -290, 154, -331, 113, -352, 1
 [node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="MapCollision"]
 polygon = PackedVector2Array(-153, -267, 91, -267, 115, -243, 115, -199, 120, -200, 120, -206, 255, -206, 270, -198, 270, -50, 228, -50, 228, -35, 270, -35, 270, -9, 245, -9, 221, 9, 221, 122, 269, 122, 269, 164, 195, 164, 195, 221, 190, 226, 144, 226, 141, 222, -66, 222, -70, 226, -104, 226, -107, 222, -114, 222, -210, 126, -213, 126, -241, 154, -243, 327, 356, 313, 340, -313, -142, -309, -153, -305)
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_344ge")
+
 [node name="AmmoPickup" parent="." instance=ExtResource("4_ru2s2")]
 visible = false
 position = Vector2(313.016, 369.77)
@@ -80,7 +93,7 @@ process_mode = 3
 
 [node name="Player" parent="." node_paths=PackedStringArray("player_ui") groups=["player"] instance=ExtResource("2_3wrlq")]
 position = Vector2(-12, -44)
-collision_mask = 1
+collision_mask = 2
 player_ui = NodePath("../PlayerUI")
 
 [node name="KeyPickup" parent="." instance=ExtResource("7_qpmsp")]
@@ -95,10 +108,10 @@ position = Vector2(318, 437)
 script = ExtResource("9_4frcv")
 
 [node name="SpawnPoint1" type="Marker2D" parent="." groups=["spawnpoint"]]
-position = Vector2(-668, -483)
+position = Vector2(-278, -156)
 
 [node name="SpawnPoint2" type="Marker2D" parent="." groups=["spawnpoint"]]
-position = Vector2(481, -582)
+position = Vector2(186, -26)
 
 [node name="SpawnPoint3" type="Marker2D" parent="." groups=["spawnpoint"]]
-position = Vector2(515, 755)
+position = Vector2(-80, 174)

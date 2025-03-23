@@ -14,7 +14,7 @@ func _ready() -> void:
 	swip_weapon(starting_weapon)
 	ActionManager.weapon_system = self
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("shoot"):
 		ActionManager.set_action(ActionManager.Actions.SHOOT)
 	if Input.is_action_just_pressed("reload"):

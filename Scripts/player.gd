@@ -8,11 +8,10 @@ class_name Player
 @onready var audio_player = $AudioStreamPlayer2D
 
 @export var player_ui: PlayerUI
-@export var base_speed = 400
+@export var base_speed = 135
 @onready var speed = base_speed
-@export var rotation_speed = 5
 @export var dash_length = 0.2
-@export var dash_speed = 1000
+@export var dash_speed = 300
 
 var movement_direction: Vector2 = Vector2.ZERO
 var angle
@@ -37,7 +36,14 @@ func _ready():
 	audio_player.stream = load("res://Assets/Audio/dash.wav")
 
 func _physics_process(delta):
-	# Normalize movement direction to avoid diagonal speed increase
+	if angle:
+		$WeaponSystem.rotation = angle
+		if cos(angle) < 0: # flip the weapon sprite if it's pointing to the left
+			$WeaponSystem.scale.y = -1
+		else:
+			$WeaponSystem.scale.y = 1
+	
+	# normalize movement direction to avoid diagonal speed increase
 	if movement_direction.length() > 0:
 		movement_direction = movement_direction.normalized()
 	
@@ -51,9 +57,6 @@ func _physics_process(delta):
 	velocity = movement_direction * speed
 	move_and_slide()
 	
-	if angle:
-		global_rotation = lerp_angle(global_rotation, angle, delta * rotation_speed)
-
 func _input(event):
 	if is_dashing: return
 

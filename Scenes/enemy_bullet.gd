@@ -4,12 +4,13 @@ extends Node2D
 const my_scene = preload("res://Scenes/enemy_bullet.tscn")
 
 var direction: Vector2
-var speed: float = 800 # pixels per second
+var speed: float = 400 # pixels per second
 var damage: int = 3
 
 static func new_enemy_bullet(origin: Vector2, target: Vector2, src: Node) -> EnemyBullet:
 	var bullet: EnemyBullet = my_scene.instantiate()
 	bullet.direction = (target - origin).normalized()
+	bullet.rotation = bullet.direction.angle()
 	bullet.position = origin
 	
 	src.add_child(bullet)
