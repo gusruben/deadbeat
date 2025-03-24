@@ -59,7 +59,6 @@ func take_damage(damage: int):
 
 func on_died():
 	try_to_drop_pickup.call_deferred()
-	queue_free()
 
 func try_to_drop_pickup():
 	var current_pickup_drop_chance = randf()
