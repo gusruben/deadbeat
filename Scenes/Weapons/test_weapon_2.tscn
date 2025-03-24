@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0tvg1jrp2h2h"]
+
+[ext_resource type="Script" uid="uid://boaw3rlwucqme" path="res://Scripts/shooting_system.gd" id="1_1yct8"]
+[ext_resource type="Texture2D" uid="uid://cjvejx10dnqww" path="res://Assets/Guns/sniper.png" id="2_1yct8"]
+
+[node name="TestWeapon1" type="Node2D"]
+
+[node name="ShootingSystem" type="Marker2D" parent="."]
+script = ExtResource("1_1yct8")
+metadata/_custom_type_script = "uid://boaw3rlwucqme"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -1)
+texture = ExtResource("2_1yct8")

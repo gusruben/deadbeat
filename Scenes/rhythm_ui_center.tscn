@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo13xfomjopox"]
+
+[ext_resource type="Texture2D" uid="uid://cr1nfqjc8o2bi" path="res://Assets/rhythm-center.png" id="1_5t5wa"]
+
+[node name="RhythmUiCenter" type="Sprite2D"]
+texture = ExtResource("1_5t5wa")

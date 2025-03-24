@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds5t0mq7spwig"
-path="res://.godot/imported/gun.png-2b2dabde1e5f1edfbd70b8d7babe5555.ctex"
+uid="uid://cvxb3f6bou2qa"
+path="res://.godot/imported/beam.png-2e9081c786791ae611496c671811d410.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/gun.png"
-dest_files=["res://.godot/imported/gun.png-2b2dabde1e5f1edfbd70b8d7babe5555.ctex"]
+source_file="res://Assets/Guns/beam.png"
+dest_files=["res://.godot/imported/beam.png-2e9081c786791ae611496c671811d410.ctex"]
 
 [params]
 

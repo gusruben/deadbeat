@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbgsl1beyr6yk"]
 
 [ext_resource type="Script" uid="uid://boaw3rlwucqme" path="res://Scripts/shooting_system.gd" id="1_vwcud"]
-[ext_resource type="Texture2D" uid="uid://0tai260flc7l" path="res://Assets/gun3.png" id="2_pakt8"]
+[ext_resource type="Texture2D" uid="uid://cmbw88xj5t2c4" path="res://Assets/Guns/ak.png" id="2_pakt8"]
 
 [node name="TestWeapon1" type="Node2D"]
 

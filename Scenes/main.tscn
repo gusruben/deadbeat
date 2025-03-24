@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bw58hbvgrukc" path="res://Scenes/ammo_pickup.tscn" id="4_ru2s2"]
 [ext_resource type="PackedScene" uid="uid://c164b6qb8ruft" path="res://Scenes/health_pickup.tscn" id="6_lr74n"]
 [ext_resource type="PackedScene" uid="uid://c36uj83ykhemk" path="res://Scenes/key_pickup.tscn" id="7_qpmsp"]
-[ext_resource type="Script" uid="uid://dfdfdux6imfp5" path="res://Scripts/ring_manager.gd" id="9_4frcv"]
+[ext_resource type="Script" uid="uid://dfdfdux6imfp5" path="res://Scripts/rhythm_ui_manager.gd" id="9_4frcv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_344ge"]
 vertices = PackedVector2Array(-243, -85, -267, -93, -180, -95, -131, -95, -217, -85, -68, -4, 89.6172, -18.3984, 139.633, 4.78125, -134, 11, -220, -114, -246, -114, 241.672, -19, 211, 4, 155, -8.39844, 155, -28.5078, 218, -25, 130, -191.797, 173.68, -160.422, 164.477, -152.75, 90, -160.5, 90, -182, 105, -186.797, 260, -192, 260, -60, 218, -60, 211, -117.344, 211, -142.773, 252.5, -196, -122, -34, -122, -69, -115, -42, -115, -4, -131, -144, -126, -100, -126, -70, -267, -127, -246, -180, 204.508, -105.992, 82, -145.5, 158, -143.031, 82, -106, -180, -144, -220, -180, -189, -178, -272, 19, -245, -4, -209, -22, -209, 11, -228, 28, -254, 28, 69, -59.6406, -68, -42, 194.758, -99.4922, 205.742, -151.539, 86.8594, -257, 105, -238.859, 64.4062, -182, -18, -197, -18, -237, -149, -257, -78.3594, -237, -98, -227.18, -164, -242.711, 211, 132, 185, 154, -228, 97, -157, 40, -73, -70, -73, -100, 52, -106, 69, -78.5938, -189, -69, -190, -69, 130, -196, 195.297, -160.492, 183.883, -162.117, 260, -25, 260, -19, 185.117, -97.8828, 174.344, -99.4219, 109.461, -48.6328, 164.492, -105.992, 90.9375, -88, 158, -117.344, -189, -34, -190, -34, -217, -69, -272, -4, -182, 11, -182, 40, -157, 11, -254, 61, -295, 61, -300, 19, 259, 132, 259, 154, 185, 216, 149, 216, 146, 212, -70.1406, 212, -74.1406, 216, -205.859, 116, -326.859, 103, -342, 103, -342, -199, -325, -127, -325, -93, -189, -199, -65.6484, -197, 52, -161.828, -75.6406, -192, -84.1406, -192, -164, -178, -98, -205.859, -99, 216, -102, 212, -134, -22, -243, -34, -245, -39, -300, -39, -217.141, 116, -245.141, 144, -285.859, 144, -295, 97, -109.859, 212)
@@ -82,6 +82,7 @@ polygon = PackedVector2Array(-241, 154, -241, 154, -290, 154, -331, 113, -352, 1
 polygon = PackedVector2Array(-153, -267, 91, -267, 115, -243, 115, -199, 120, -200, 120, -206, 255, -206, 270, -198, 270, -50, 228, -50, 228, -35, 270, -35, 270, -9, 245, -9, 221, 9, 221, 122, 269, 122, 269, 164, 195, 164, 195, 221, 190, 226, 144, 226, 141, 222, -66, 222, -70, 226, -104, 226, -107, 222, -114, 222, -210, 126, -213, 126, -241, 154, -243, 327, 356, 313, 340, -313, -142, -309, -153, -305)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_344ge")
 
 [node name="AmmoPickup" parent="." instance=ExtResource("4_ru2s2")]
@@ -96,6 +97,9 @@ position = Vector2(-12, -44)
 collision_mask = 2
 player_ui = NodePath("../PlayerUI")
 
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("9_4frcv")
+
 [node name="KeyPickup" parent="." instance=ExtResource("7_qpmsp")]
 visible = false
 position = Vector2(-60, 356)
@@ -103,9 +107,6 @@ position = Vector2(-60, 356)
 [node name="HealthPickup" parent="." instance=ExtResource("6_lr74n")]
 visible = false
 position = Vector2(318, 437)
-
-[node name="RingManager" type="CanvasLayer" parent="."]
-script = ExtResource("9_4frcv")
 
 [node name="SpawnPoint1" type="Marker2D" parent="." groups=["spawnpoint"]]
 position = Vector2(-278, -156)

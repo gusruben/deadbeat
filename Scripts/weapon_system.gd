@@ -7,11 +7,14 @@ signal gun_reload(ammo_in_magazine: int, ammo_left: int)
 signal ammo_added(total_ammo: int)
 
 @export var starting_weapon: PackedScene = preload("res://Scenes/Weapons/test_weapon_1.tscn")
+var weapon_1: PackedScene = preload("res://Scenes/Weapons/test_weapon_1.tscn")
+var weapon_2: PackedScene = preload("res://Scenes/Weapons/test_weapon_2.tscn")
+var weapon_3: PackedScene = preload("res://Scenes/Weapons/test_weapon_3.tscn")
 var cur_weapon: Node
 var cur_weapon_shoot_system: ShootingSystem
 
 func _ready() -> void:
-	swip_weapon(starting_weapon)
+	swip_weapon(weapon_1)
 	ActionManager.weapon_system = self
 
 func _input(_event):
