@@ -112,7 +112,7 @@ func hide_extract_countdown():
 
 func extract():
 	player_ui.on_game_over(false)
-	queue_free()
+	#queue_free()
 
 func on_died():
 	player_ui.on_game_over(true)

@@ -39,7 +39,8 @@ func _ready():
 	state_machine.transition_to("Chase")
 
 func _physics_process(_delta):
-	player_obstructed = is_position_obstructed(get_tree().get_first_node_in_group("player").global_position)
+	if ActionManager.player:
+		player_obstructed = is_position_obstructed(ActionManager.player.global_position)
 
 func is_position_obstructed(target_position):
 	vision_ray_cast_2d.target_position = target_position - global_position
@@ -59,6 +60,7 @@ func take_damage(damage: int):
 
 func on_died():
 	try_to_drop_pickup.call_deferred()
+	queue_free()
 
 func try_to_drop_pickup():
 	var current_pickup_drop_chance = randf()

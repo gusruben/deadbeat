@@ -19,7 +19,6 @@ func _ready():
 
 func _process(_delta):
 	center.modulate.a = lerp(center_pulse_opacity, 0.0, BeatManager.beat_percentage)
-	print(BeatManager.beat_percentage)
 		
 	if ActionManager.player:
 		position = ActionManager.player.position + Vector2(0, -8)

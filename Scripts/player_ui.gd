@@ -58,10 +58,11 @@ func hide_extract_countdown():
 
 func on_game_over(is_game_lost: bool):
 	if is_game_lost:
-		game_over_label.text = "die lmfao"
+		game_over_label.text = ":skull:"
 	game_over_container.show()
 
 
 func _on_play_again_button_pressed():
 	get_tree().paused = false
+	GameManager.reset()
 	get_tree().reload_current_scene()

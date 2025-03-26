@@ -23,6 +23,9 @@ func _ready():
 		BeatManager.on_beat.connect(_on_beat)
 
 func physics_update(delta):
+	if !owner || owner.is_queued_for_deletion():
+		return
+
 	if attack_mode == AttackMode.SPEED_BASED:
 		time_elapsed += delta
 		if time_elapsed >= time_between_attacks:

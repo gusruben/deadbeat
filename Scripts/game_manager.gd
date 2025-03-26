@@ -26,6 +26,9 @@ func _ready():
 
 func start_wave():
 	print("Starting wave ", current_wave)
+	# for some reason, unless i refresh it some of the spawnpoints will free / be null?
+	spawn_points = get_tree().get_nodes_in_group("spawnpoint")
+
 	var sp_amount = spawn_points.size()
 	if wave_enemy_counts[current_wave] < sp_amount:
 		for i in range(wave_enemy_counts[current_wave]):
@@ -70,3 +73,10 @@ func spawn_multiple_enemies(x, y, count, wave_starter = false):
 			await get_tree().create_timer(time_between_waves).timeout;
 			start_wave();
 			
+func reset():
+	current_wave = 0
+	for spawn_point in spawn_points:
+		spawn_point_cooldowns.append(0)
+	for entity in get_tree().get_root().get_children():
+		if entity is Enemy:
+			entity.queue_free()
