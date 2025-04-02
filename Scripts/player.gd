@@ -35,8 +35,7 @@ func _ready():
 	# currently there are no other sounds
 	audio_player.stream = load("res://Assets/Audio/dash.wav")
 	
-	# start idle animation
-	$AnimatedSprite2D.play("idle");
+	update_animation()
 
 func _physics_process(delta):
 	if angle:
@@ -84,17 +83,15 @@ func dash():
 	audio_player.play()
 	dash_timer = 0
 	is_dashing = true
-	if (Input.is_action_pressed("move_forward") || Input.is_action_pressed("move_backwards") || Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right")):
-		$AnimatedSprite2D.play("run")
-	else:
-		$AnimatedSprite2D.play("idle")
+	update_animation()
 		
 func update_animation():
 	var position_on_screen = (get_viewport_rect().size / 2) + $Camera2D.offset
 	var direction = "right" if get_viewport().get_mouse_position().x > position_on_screen.x else "left"
 	
 	if is_dashing:
-		$AnimatedSprite2D.play("dash_" + direction)
+		var dash_direction = "right" if movement_direction.x > 0 else "left"
+		$AnimatedSprite2D.play("dash_" + dash_direction + "_look_" + direction)
 		return
 	
 	if Input.is_action_pressed("move_right"):
