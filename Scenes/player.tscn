@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://bjxyci4gifbyb"]
+[gd_scene load_steps=53 format=3 uid="uid://bjxyci4gifbyb"]
 
 [ext_resource type="Script" uid="uid://dvwh5mp0a4rrq" path="res://Scripts/player.gd" id="1_36n2m"]
 [ext_resource type="Texture2D" uid="uid://7wdlgjllfn4e" path="res://Assets/player.png" id="2_fkybt"]
+[ext_resource type="Material" uid="uid://dnd71orjmxcsk" path="res://Shaders/outline.tres" id="2_x3wgy"]
 [ext_resource type="Script" uid="uid://davdebiw0yteq" path="res://Scripts/health_system.gd" id="3_k0xct"]
 [ext_resource type="Script" uid="uid://jxxhy3p4f3vk" path="res://Scripts/camera.gd" id="3_o00ra"]
 [ext_resource type="Script" uid="uid://fs8q2xvr3ei8" path="res://Scripts/weapon_system.gd" id="5_x3wgy"]
@@ -375,6 +376,7 @@ collision_mask = 64
 script = ExtResource("1_36n2m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_x3wgy")
 sprite_frames = SubResource("SpriteFrames_gymyn")
 animation = &"idle_look_right"
 
@@ -383,6 +385,7 @@ position_smoothing_speed = 0.0
 script = ExtResource("3_o00ra")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -3.55271e-15)
 scale = Vector2(0.355114, 0.506469)
 shape = SubResource("RectangleShape2D_fkybt")
@@ -393,5 +396,4 @@ script = ExtResource("3_k0xct")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="WeaponSystem" type="Node2D" parent="."]
-visible = false
 script = ExtResource("5_x3wgy")
