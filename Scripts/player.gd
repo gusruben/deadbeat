@@ -13,6 +13,9 @@ class_name Player
 @export var dash_length = 0.2
 @export var dash_speed = 300
 
+@export var hand_distance = 8
+@export var weapon_distance = 12
+
 var movement_direction: Vector2 = Vector2.ZERO
 var angle
 var has_key = false
@@ -40,11 +43,25 @@ func _ready():
 func _physics_process(delta):
 	if angle:
 		$WeaponSystem.rotation = angle
-		if cos(angle) < 0: # flip the weapon sprite if it's pointing to the left
+		# flip the weapon sprite if it's pointing to the left + move it to the right side of the player
+		if cos(angle) < 0:
 			$WeaponSystem.scale.y = -1
+			$WeaponSystem.position.x = -hand_distance
 		else:
 			$WeaponSystem.scale.y = 1
-	
+			$WeaponSystem.position.x = hand_distance
+
+		# move the weapon below the player if it's up
+		if sin(angle) < 0:
+			$WeaponSystem.z_index = -1
+		else:
+			$WeaponSystem.z_index = 0
+
+		# position the weapon
+		var weapon_offset = Vector2(weapon_distance, 0).rotated(angle)
+		$WeaponSystem.position.y = weapon_offset.y
+		$WeaponSystem.position.x += weapon_offset.x
+
 	# normalize movement direction to avoid diagonal speed increase
 	if movement_direction.length() > 0:
 		movement_direction = movement_direction.normalized()
