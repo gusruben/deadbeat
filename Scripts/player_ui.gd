@@ -2,15 +2,32 @@ extends CanvasLayer
 
 class_name PlayerUI
 
-@onready var life_bar = $MarginContainer/LifeBar
+@onready var life_bar = $MarginContainer/VBoxContainer/LifeBar
+@onready var score_label = $MarginContainer/VBoxContainer/ScoreLabel
+@onready var streak_label = $MarginContainer/VBoxContainer/StreakLabel
 @onready var ammo_container = %AmmoContainer
 @onready var ammo_left_label = %AmmoLeftLabel
 @onready var key_icon = %KeyIcon
 @onready var extract_counter_label = $MarginContainer/ExtractCounterLabel
 @onready var game_over_label = %GameOverLabel
 @onready var game_over_container = $GameOverContainer
+@onready var multiplier_num = $Multiplier/Symbol2
+@onready var multiplier_bar_1 = $Multiplier/ProgressBar
+@onready var multiplier_bar_2 = $Multiplier/ProgressBar2
 
 var bullet_texture = preload("res://Assets/bullet_icon.png")
+var number_textures = [
+	preload("res://Assets/font2/0.png"),
+	preload("res://Assets/font2/1.png"),
+	preload("res://Assets/font2/2.png"),
+	preload("res://Assets/font2/3.png"),
+	preload("res://Assets/font2/4.png"),
+	preload("res://Assets/font2/5.png"),
+	preload("res://Assets/font2/6.png"),
+	preload("res://Assets/font2/7.png"),
+	preload("res://Assets/font2/8.png"),
+	preload("res://Assets/font2/9.png"),
+]
 
 
 func set_life_bar_max_value(max_value: int):

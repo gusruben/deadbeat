@@ -3,6 +3,9 @@ extends Sprite2D
 var lifetime = 0.0 # 0 to 1
 var speed = 1.0 # set by RhythmUIManager
 var left = false # is it a segment on the left or right side
+var little = false
+
+var little_texture = preload("res://Assets/rhythm-edge-small.png")
 
 @export var fade_end = 1 # how much of the way through the animation the circle should stop fading
 
@@ -14,6 +17,9 @@ func _ready():
 		scale.x = -1
 		start_position *= -1
 		end_position *= -1
+	
+	if little:
+		texture = little_texture
 	
 	render()
 
@@ -28,4 +34,4 @@ func _process(delta):
 func render():
 	#scale = Vector2.ONE * lerp(start_scale, end_scale, lifetime)
 	position.x = lerp(start_position, end_position, lifetime)
-	modulate.a = min(1, lerp(0, 1 / fade_end, lifetime)) # opacity
+	modulate.a = min(1, lerp(0.0, 1 / float(fade_end), lifetime)) # opacity

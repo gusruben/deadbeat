@@ -10,6 +10,7 @@ var center_pulse_opacity = 0.4
 
 func _ready():
 	BeatManager.on_beat.connect(_on_beat)
+	BeatManager.on_half_beat.connect(_on_half_beat)
 	sec_per_beat = 60.0 / BeatManager.bpm
 	
 	center = RhythmCenter.instantiate()
@@ -23,14 +24,19 @@ func _process(_delta):
 	if ActionManager.player:
 		position = ActionManager.player.position + Vector2(0, -8)
 
-func spawn_segment():
+func spawn_segment(little = false):
 	var segment1 = RhythmSegment.instantiate()
 	var segment2 = RhythmSegment.instantiate()
 	segment1.speed = 1.0 / (sec_per_beat * float(segments_at_once))
 	segment2.speed = 1.0 / (sec_per_beat * float(segments_at_once))
+	segment1.little = little
+	segment2.little = little
 	segment2.left = true
 	add_child(segment2)
 	add_child(segment1)
 
 func _on_beat():
 	spawn_segment()
+	
+func _on_half_beat():
+	spawn_segment(true)

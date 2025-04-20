@@ -1,7 +1,6 @@
 extends State
 
 @onready var navigation_agent_2d = $"../../NavigationAgent2D" as NavigationAgent2D
-@onready var sprite_2d = $"../../Sprite2D" as Sprite2D
 
 func enter(_msg = {}) -> void:
 	if !owner || owner.is_queued_for_deletion():
@@ -18,7 +17,8 @@ func physics_update(_delta: float):
 		set_next_chasing_target_point()
 	
 	var next_position = navigation_agent_2d.get_next_path_position()
-	(owner as Enemy).move_to_position(next_position)
+	if (owner is ChargeEnemy or owner is ShootEnemy) and next_position:
+		owner.move_to_position(next_position)
 
 func try_to_stop_chasing() -> bool:
 	var player = get_tree().get_first_node_in_group("player")
@@ -26,7 +26,7 @@ func try_to_stop_chasing() -> bool:
 		return true
 
 	var player_position = player.global_position
-	var distance_to_player = (owner as Enemy).global_position.distance_to(player_position)
+	var distance_to_player = owner.global_position.distance_to(player_position)
 
 	if distance_to_player < owner.chase_distance && !owner.player_obstructed:
 		stop_chasing()

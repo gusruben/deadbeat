@@ -24,6 +24,9 @@ func set_action(action: Actions):
 	actioned_last_beat = true
 
 func trigger_action(action: Actions):
+	if !GameManager.player:
+		return
+		
 	match action:
 		Actions.SHOOT:
 			weapon_system.shoot()
@@ -38,7 +41,3 @@ func _on_beat():
 		current_action = Actions.NONE
 	else:
 		actioned_last_beat = false
-	
-
-func _process(delta: float) -> void:
-	pass

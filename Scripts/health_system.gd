@@ -2,17 +2,19 @@ extends Node
 
 class_name HealthSystem
 
-signal died
-signal damage_taken(current_health: int)
+signal died(source)
+signal damage_taken(current_health: float)
 
-@export var base_health = 15
+@export var base_health: float = 15
 var current_health
 
 func _ready():
 	current_health = base_health
+	if owner is ShootEnemy:
+		base_health = 25
 
-func take_damage(damage: int):
+func take_damage(damage: float, source):
 	current_health -= damage
 	damage_taken.emit(current_health)
 	if current_health <= 0:
-		died.emit()
+		died.emit(source)

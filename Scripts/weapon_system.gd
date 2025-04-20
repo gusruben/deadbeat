@@ -6,25 +6,32 @@ signal shot(ammo_in_magazine: int)
 signal gun_reload(ammo_in_magazine: int, ammo_left: int)
 signal ammo_added(total_ammo: int)
 
-@export var starting_weapon: PackedScene = preload("res://Scenes/Weapons/test_weapon_1.tscn")
-var weapon_1: PackedScene = preload("res://Scenes/Weapons/test_weapon_1.tscn")
-var weapon_2: PackedScene = preload("res://Scenes/Weapons/test_weapon_2.tscn")
-var weapon_3: PackedScene = preload("res://Scenes/Weapons/test_weapon_3.tscn")
+enum WeaponTypes { STANDARD, AUTO }
+
+@export var starting_weapon: PackedScene = preload("res://Scenes/Weapons/pistol.tscn")
+var weapon_1: PackedScene = preload("res://Scenes/Weapons/pistol.tscn")
+var weapon_2: PackedScene = preload("res://Scenes/Weapons/burst.tscn")
+var weapon_3: PackedScene = preload("res://Scenes/Weapons/ray.tscn")
 var cur_weapon: Node
 var cur_weapon_shoot_system: ShootingSystem
 
 func _ready() -> void:
-	swip_weapon(weapon_1)
+	swip_weapon(starting_weapon)
 	ActionManager.weapon_system = self
 
 func _input(_event):
 	if Input.is_action_just_pressed("shoot"):
 		ActionManager.set_action(ActionManager.Actions.SHOOT)
+	if Input.is_action_just_released("shoot"):
+		cur_weapon_shoot_system.stop_shooting()
 	if Input.is_action_just_pressed("reload"):
 		ActionManager.set_action(ActionManager.Actions.RELOAD)
 
 func shoot():
-	cur_weapon_shoot_system.shoot()
+	if cur_weapon.type == WeaponTypes.STANDARD:
+		cur_weapon_shoot_system.shoot()
+	else:
+		cur_weapon_shoot_system.start_shooting()
 	shot.emit(cur_weapon_shoot_system.ammo_in_magazine)
 
 func reload():

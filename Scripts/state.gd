@@ -7,10 +7,10 @@ var state_machine = null
 func update(_delta: float) -> void:
 	pass
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	pass
 
-func enter(msg = {}) -> void:
+func enter(_msg = {}) -> void:
 	pass
 	
 func exit() -> void:

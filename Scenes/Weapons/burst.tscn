@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwy2t6cki7v2t"]
+
+[ext_resource type="Script" uid="uid://23yxeovsmus4" path="res://Scripts/guns/burst.gd" id="1_ryve3"]
+[ext_resource type="Script" uid="uid://boaw3rlwucqme" path="res://Scripts/shooting_system.gd" id="2_21qm6"]
+[ext_resource type="Texture2D" uid="uid://bioniwfuwp0uy" path="res://Assets/Guns/ak-green.png" id="3_21qm6"]
+
+[node name="TestWeapon1" type="Node2D"]
+script = ExtResource("1_ryve3")
+
+[node name="ShootingSystem" type="Marker2D" parent="."]
+script = ExtResource("2_21qm6")
+metadata/_custom_type_script = "uid://boaw3rlwucqme"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -1)
+texture = ExtResource("3_21qm6")

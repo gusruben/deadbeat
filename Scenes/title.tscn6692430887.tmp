@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://mb5iao4nl4wp"]
+
+[ext_resource type="Texture2D" uid="uid://cwhseyuqewqes" path="res://Assets/title/bg.png" id="1_ekrfg"]
+[ext_resource type="Texture2D" uid="uid://d4i02a887u42e" path="res://Assets/title/splash.png" id="2_fp2oq"]
+[ext_resource type="Texture2D" uid="uid://pvo2ftmst4fs" path="res://Assets/title/text-bottom.png" id="3_q2qps"]
+[ext_resource type="Texture2D" uid="uid://b0d31tdriqqhe" path="res://Assets/title/text-top.png" id="4_yosvi"]
+[ext_resource type="Script" uid="uid://cmi0wpfq288vs" path="res://Scripts/stars.gd" id="5_cwqts"]
+[ext_resource type="Texture2D" uid="uid://cade5j5y477pf" path="res://Assets/title/stars/star1.png" id="6_th2ad"]
+[ext_resource type="Texture2D" uid="uid://c13honm11gi5c" path="res://Assets/title/stars/star2.png" id="7_qh4d7"]
+[ext_resource type="Texture2D" uid="uid://y1i2abfe41d7" path="res://Assets/title/stars/star3.png" id="8_lv7gn"]
+[ext_resource type="Texture2D" uid="uid://cfqxrpu2wyaoj" path="res://Assets/title/stars/star4.png" id="9_5vuho"]
+[ext_resource type="Texture2D" uid="uid://dvwm0od0g6paw" path="res://Assets/title/stars/star5.png" id="10_ohkfa"]
+[ext_resource type="Texture2D" uid="uid://b7ndmkyc0r7tq" path="res://Assets/title/stars/star6.png" id="11_ps378"]
+
+[node name="Title" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_ekrfg")
+
+[node name="Splatter" type="Sprite2D" parent="."]
+texture = ExtResource("2_fp2oq")
+
+[node name="Logo" type="Node2D" parent="."]
+
+[node name="LogoBottom" type="Sprite2D" parent="Logo"]
+position = Vector2(0, 54)
+texture = ExtResource("3_q2qps")
+
+[node name="LogoTop" type="Sprite2D" parent="Logo"]
+position = Vector2(0, -62)
+texture = ExtResource("4_yosvi")
+
+[node name="Stars" type="Node2D" parent="."]
+script = ExtResource("5_cwqts")
+
+[node name="Star1" type="Sprite2D" parent="Stars"]
+position = Vector2(-192, -61)
+texture = ExtResource("6_th2ad")
+
+[node name="Star2" type="Sprite2D" parent="Stars"]
+position = Vector2(-48, -66)
+texture = ExtResource("7_qh4d7")
+
+[node name="Star3" type="Sprite2D" parent="Stars"]
+position = Vector2(88, -123)
+texture = ExtResource("8_lv7gn")
+
+[node name="Star4" type="Sprite2D" parent="Stars"]
+position = Vector2(175, -65)
+texture = ExtResource("9_5vuho")
+
+[node name="Star5" type="Sprite2D" parent="Stars"]
+position = Vector2(-194, 57)
+texture = ExtResource("10_ohkfa")
+
+[node name="Star6" type="Sprite2D" parent="Stars"]
+position = Vector2(165, 30)
+texture = ExtResource("11_ps378")
+
+[node name="Star7" type="Sprite2D" parent="Stars"]
+position = Vector2(20, 72)
+rotation = -0.429351
+texture = ExtResource("6_th2ad")
+
+[node name="Star8" type="Sprite2D" parent="Stars"]
+position = Vector2(-74, 99)
+rotation = -0.797615
+texture = ExtResource("8_lv7gn")
+
+[node name="Camera2D" type="Camera2D" parent="."]

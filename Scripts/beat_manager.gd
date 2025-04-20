@@ -5,6 +5,7 @@ signal before_beat # triggers a little before beat, for stuff that takes a sec (
 signal on_half_beat
 
 @export var bpm = 170
+#@export var bpm = 85
 var sec_per_beat = 60.0 / bpm
 var elapsed_time = 0.0 # just for the current beat
 var before_beat_gap = 0.05 # time before a beat that before_beat will trigger
@@ -18,7 +19,7 @@ var last_song_position = 0
 var bgm = preload("res://Assets/Audio/loop.wav")
 
 func _ready() -> void:
-	music_player.volume_db = -20
+	music_player.volume_db = -28
 	add_child(music_player)
 	music_player.stream = bgm
 	music_player.play()
@@ -36,10 +37,12 @@ func _process(_delta) -> void:
 		elapsed_time -= sec_per_beat
 		emit_signal("on_beat")
 		before_beat_triggered = false
+		beat_number += 1
+	if elapsed_time >= (sec_per_beat / 2.0) && elapsed_time - song_delta < (sec_per_beat / 2.0):
+		emit_signal("on_half_beat")
 		
 	if elapsed_time >= sec_per_beat - before_beat_gap && !before_beat_triggered:
 		before_beat_triggered = true
 		emit_signal("before_beat")
-		beat_number += 1
 		
 	beat_percentage = elapsed_time / (60.0 / float(bpm))

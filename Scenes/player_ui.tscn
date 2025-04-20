@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bshkyyfn6knhd"]
+[gd_scene load_steps=10 format=3 uid="uid://bshkyyfn6knhd"]
 
 [ext_resource type="Script" uid="uid://bmm2efhmfo1rf" path="res://Scripts/player_ui.gd" id="1_7nceg"]
 [ext_resource type="Theme" uid="uid://o2i6ofsjprkk" path="res://Themes/ui.theme" id="1_wbt8q"]
 [ext_resource type="FontFile" uid="uid://dtno1p0w7goma" path="res://Assets/monogram.ttf" id="3_46yqn"]
 [ext_resource type="Texture2D" uid="uid://crejfhgcj8jga" path="res://Assets/key.png" id="3_shr7w"]
+[ext_resource type="FontFile" uid="uid://bjp27b13ict38" path="res://Assets/PixelSerif_16px_v02.ttf" id="3_uflt7"]
+[ext_resource type="Texture2D" uid="uid://d0vtg0isvnp7i" path="res://Assets/font2/x.png" id="5_jbpjp"]
+[ext_resource type="Texture2D" uid="uid://b771d3gr1vhrt" path="res://Assets/font2/1.png" id="6_jbpjp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jssq"]
+bg_color = Color(1, 0.243137, 0.415686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uflt7"]
+bg_color = Color(1, 0.984314, 0.913725, 1)
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_7nceg")
@@ -19,13 +28,29 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="LifeBar" type="ProgressBar" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LifeBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(128, 10)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("1_wbt8q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6jssq")
 value = 20.0
 show_percentage = false
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uflt7")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="StreakLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.876979, 0.74445, 0.386054, 1)
+theme_override_fonts/font = ExtResource("3_uflt7")
+text = "(0)"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_direction = 2
@@ -100,5 +125,43 @@ text = ":skull:"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_46yqn")
 text = "Respawn"
+
+[node name="Multiplier" type="CanvasGroup" parent="."]
+position = Vector2(352, 79)
+
+[node name="Symbol1" type="TextureRect" parent="Multiplier"]
+offset_left = -14.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 25.0
+texture = ExtResource("5_jbpjp")
+
+[node name="Symbol2" type="TextureRect" parent="Multiplier"]
+offset_left = 25.0
+offset_top = -33.0
+offset_right = 52.0
+offset_bottom = 13.0
+texture = ExtResource("6_jbpjp")
+
+[node name="ProgressBar" type="ProgressBar" parent="Multiplier"]
+offset_left = -9.0
+offset_top = 29.0
+offset_right = 59.41
+offset_bottom = 35.0
+rotation = -0.279253
+theme_override_styles/fill = SubResource("StyleBoxFlat_uflt7")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="ProgressBar2" type="ProgressBar" parent="Multiplier"]
+offset_left = -6.0
+offset_top = 37.0
+offset_right = 62.0
+offset_bottom = 41.0
+rotation = -0.279253
+theme_override_styles/fill = SubResource("StyleBoxFlat_uflt7")
+rounded = true
+show_percentage = false
 
 [connection signal="pressed" from="GameOverContainer/Panel/VBoxContainer/Play Again Button" to="." method="_on_play_again_button_pressed"]

@@ -6,15 +6,13 @@ class_name Player
 # @onready var shooting_system = $ShootingSystem as ShootingSystem
 @onready var weapon_system = $WeaponSystem as WeaponSystem
 @onready var audio_player = $AudioStreamPlayer2D
+@onready var death_screen = get_tree().get_first_node_in_group("death_screen")
 
 @export var player_ui: PlayerUI
 @export var base_speed = 135
 @onready var speed = base_speed
 @export var dash_length = 0.2
-@export var dash_speed = 300
-
-@export var hand_distance = 8
-@export var weapon_distance = 12
+@export var dash_speed = 300	
 
 var movement_direction: Vector2 = Vector2.ZERO
 var angle
@@ -39,29 +37,10 @@ func _ready():
 	audio_player.stream = load("res://Assets/Audio/dash.wav")
 	
 	update_animation()
+	update_gun_holding()
+
 
 func _physics_process(delta):
-	if angle:
-		$WeaponSystem.rotation = angle
-		# flip the weapon sprite if it's pointing to the left + move it to the right side of the player
-		if cos(angle) < 0:
-			$WeaponSystem.scale.y = -1
-			$WeaponSystem.position.x = -hand_distance
-		else:
-			$WeaponSystem.scale.y = 1
-			$WeaponSystem.position.x = hand_distance
-
-		# move the weapon below the player if it's up
-		if sin(angle) < 0:
-			$WeaponSystem.z_index = -1
-		else:
-			$WeaponSystem.z_index = 0
-
-		# position the weapon
-		var weapon_offset = Vector2(weapon_distance, 0).rotated(angle)
-		$WeaponSystem.position.y = weapon_offset.y
-		$WeaponSystem.position.x += weapon_offset.x
-
 	# normalize movement direction to avoid diagonal speed increase
 	if movement_direction.length() > 0:
 		movement_direction = movement_direction.normalized()
@@ -76,7 +55,30 @@ func _physics_process(delta):
 	velocity = movement_direction * speed
 	move_and_slide()
 	
-func _input(event):
+func update_gun_holding():
+	angle = (get_global_mouse_position() - global_position).angle()
+	
+	$WeaponSystem.rotation = angle
+	# flip the weapon sprite if it's pointing to the left + move it to the right side of the player
+	if cos(angle) < 0:
+		$WeaponSystem.scale.y = -1
+		$WeaponSystem.position.x = -$WeaponSystem.cur_weapon.hand_distance
+	else:
+		$WeaponSystem.scale.y = 1
+		$WeaponSystem.position.x = $WeaponSystem.cur_weapon.hand_distance
+
+	# move the weapon below the player if it's up
+	if sin(angle) < 0:
+		$WeaponSystem.z_index = -1
+	else:
+		$WeaponSystem.z_index = 0
+
+	# position the weapon
+	var weapon_offset = Vector2($WeaponSystem.cur_weapon.weapon_distance, 0).rotated(angle)
+	$WeaponSystem.position.y = weapon_offset.y
+	$WeaponSystem.position.x += weapon_offset.x
+
+func _input(_event):
 	if is_dashing: return
 
 	update_animation()
@@ -93,8 +95,7 @@ func _input(event):
 	if Input.is_action_pressed("dash"):
 		ActionManager.set_action(ActionManager.Actions.DASH)
 		
-
-	angle = (get_global_mouse_position() - global_position).angle()
+	update_gun_holding()
 
 func dash():
 	audio_player.play()
@@ -122,8 +123,8 @@ func update_animation():
 	else:
 		$AnimatedSprite2D.play("idle_look_" + direction)
 
-func take_damage(damage: int):
-	health_system.take_damage(damage)
+func take_damage(damage: float, source):
+	health_system.take_damage(damage, source)
 	player_ui.update_life_bar_value(health_system.current_health)
 
 func on_shot(ammo_in_magazine: int):
@@ -156,6 +157,7 @@ func extract():
 	player_ui.on_game_over(false)
 	#queue_free()
 
-func on_died():
-	player_ui.on_game_over(true)
+func on_died(killer):
+	death_screen.show_ui(killer)
+	#player_ui.on_game_over(true)
 	#queue_free()

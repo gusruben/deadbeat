@@ -2,11 +2,14 @@ extends Marker2D
 
 class_name ShootingSystem
 
-@export var max_ammo = 120
-@export var total_ammo = 120
+signal on_shoot
+signal on_start_shoot
+signal on_stop_shoot
+
+@export var max_ammo: float = 120
+@export var total_ammo: float = 120
 @export var magazine_size = 8
 
-@onready var bullet_scene = preload("res://Scenes/bullet.tscn")
 var audio_player: AudioStreamPlayer2D
 
 var last_reload = 0
@@ -23,10 +26,8 @@ var reloading = false
 @export var reload_sound_2 = preload("res://Assets/Audio/Shotgun_Pump_2.wav")
 
 var ammo_in_magazine = 0
-@export var crosshair_texture = preload("res://Assets/crosshair_white-export.png")
 
 func _ready():
-	Input.set_custom_mouse_cursor(crosshair_texture)
 	ammo_in_magazine = magazine_size
 	
 	BeatManager.before_beat.connect(_before_beat)
@@ -39,7 +40,7 @@ func reload():
 	if total_ammo <= 0:
 		return
 	
-	var bullet_missing_in_magazine = magazine_size - ammo_in_magazine
+	var bullet_missing_in_magazine: float = magazine_size - ammo_in_magazine
 	var reloaded_amount = bullet_missing_in_magazine if bullet_missing_in_magazine < total_ammo else total_ammo
 	
 	total_ammo -= reloaded_amount
@@ -56,23 +57,19 @@ func shoot():
 	if ammo_in_magazine == 0:
 		return
 	
-	var bullet = bullet_scene.instantiate() as Bullet
-	get_tree().root.add_child(bullet)
-	
-	var move_direction = (get_global_mouse_position() - global_position).normalized()
-	bullet.move_direction = move_direction
-	bullet.global_position = global_position
-	bullet.rotation = move_direction.angle()
-	
-	ammo_in_magazine -= 1
-	
-	# play shoot sound
-	audio_player.volume_db = -15
-	audio_player.stream = shoot_sounds[randi() % shoot_sounds.size()]
-	audio_player.play()
+	emit_signal("on_shoot")
+
+func start_shooting():
+	if ammo_in_magazine == 0:
+		return
+		
+	emit_signal("on_start_shoot")
+
+func stop_shooting():
+	emit_signal("on_stop_shoot")
 
 func on_ammo_pickup():
-	var ammo_to_add = max_ammo - total_ammo if total_ammo + magazine_size > max_ammo else magazine_size
+	var ammo_to_add = max_ammo - total_ammo if total_ammo + magazine_size > max_ammo else float(magazine_size)
 	total_ammo += ammo_to_add
 	
 func _before_beat():

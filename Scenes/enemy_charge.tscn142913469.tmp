@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://dmsnvoi6jecmu"]
+
+[ext_resource type="Script" uid="uid://ctdjfeud87rs5" path="res://Scripts/enemy_charge.gd" id="1_t5q4j"]
+[ext_resource type="Theme" uid="uid://o2i6ofsjprkk" path="res://Themes/ui.theme" id="2_fsxq8"]
+[ext_resource type="Script" uid="uid://b223en6jbd3i" path="res://Scripts/enemy_healthbar.gd" id="3_d3tue"]
+[ext_resource type="SpriteFrames" uid="uid://db2iywpe30qk2" path="res://Assets/enemy_charge.tres" id="4_t5q4j"]
+[ext_resource type="Script" uid="uid://dtcjhgduym52" path="res://Scripts/state_machine.gd" id="5_8t78i"]
+[ext_resource type="Script" uid="uid://ms3whdpuyu0l" path="res://Scenes/Charge.gd" id="6_qb1p5"]
+[ext_resource type="Script" uid="uid://cnvj15a6sbgw7" path="res://Scripts/random_timer.gd" id="7_avjw6"]
+[ext_resource type="Script" uid="uid://davdebiw0yteq" path="res://Scripts/health_system.gd" id="9_1cf0k"]
+
+[sub_resource type="Shader" id="Shader_8uf12"]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float outline_width: hint_range(0, 10) = 1.0;
+uniform bool square_corners = false;
+uniform float opacity_threshold: hint_range(0.0, 1.0) = 0.9;
+
+void fragment() {
+    vec4 col = texture(TEXTURE, UV);
+    vec2 ps = TEXTURE_PIXEL_SIZE;
+
+    if (col.a < 0.1) {
+        float a = 0.0;
+
+        float up = texture(TEXTURE, UV + vec2(0.0, -outline_width) * ps).a;
+        float left = texture(TEXTURE, UV + vec2(-outline_width, 0.0) * ps).a;
+        float down = texture(TEXTURE, UV + vec2(0.0, outline_width) * ps).a;
+        float right = texture(TEXTURE, UV + vec2(outline_width, 0.0) * ps).a;
+
+        // only count neighboring pixels that are above the opacity threshold
+        if (up >= opacity_threshold) a += up;
+        if (left >= opacity_threshold) a += left;
+        if (down >= opacity_threshold) a += down;
+        if (right >= opacity_threshold) a += right;
+
+		// draw corners
+        if (square_corners) {
+            float upLeft = texture(TEXTURE, UV + vec2(-outline_width, -outline_width) * ps).a;
+            float upRight = texture(TEXTURE, UV + vec2(outline_width, -outline_width) * ps).a;
+            float downLeft = texture(TEXTURE, UV + vec2(-outline_width, outline_width) * ps).a;
+            float downRight = texture(TEXTURE, UV + vec2(outline_width, outline_width) * ps).a;
+
+            // only count pixels that are above the opacity threshold
+            if (upLeft >= opacity_threshold) a += upLeft;
+            if (upRight >= opacity_threshold) a += upRight;
+            if (downLeft >= opacity_threshold) a += downLeft;
+            if (downRight >= opacity_threshold) a += downRight;
+        }
+
+        if (a > 0.0) {
+            col = outline_color;
+        }
+    }
+
+    COLOR = col;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_po0sg"]
+shader = SubResource("Shader_8uf12")
+shader_parameter/outline_color = Color(0.180705, 0.000416764, 0.35428, 1)
+shader_parameter/outline_width = 0.0
+shader_parameter/square_corners = true
+shader_parameter/opacity_threshold = 0.217
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bxqwi"]
+radius = 8.94198
+
+[node name="ChargeEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_t5q4j")
+
+[node name="LifeBar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -17.0
+offset_right = 10.0
+offset_bottom = -13.0
+theme = ExtResource("2_fsxq8")
+step = 1.0
+value = 20.0
+show_percentage = false
+script = ExtResource("3_d3tue")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_po0sg")
+sprite_frames = ExtResource("4_t5q4j")
+animation = &"run"
+autoplay = "run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.96046e-08)
+rotation = 0.551524
+scale = Vector2(0.96, 1.09)
+shape = SubResource("CircleShape2D_bxqwi")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_8t78i")
+initial_state = NodePath("Charge")
+
+[node name="Charge" type="Node" parent="StateMachine"]
+script = ExtResource("6_qb1p5")
+
+[node name="RandomTargetChaseUpdateTimer" type="Timer" parent="StateMachine/Charge"]
+one_shot = true
+script = ExtResource("7_avjw6")
+min_time = 0.5
+max_time = 3.0
+
+[node name="StateLabel" type="Label" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -46.0
+offset_right = 18.0
+offset_bottom = -23.0
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("9_1cf0k")
+
+[connection signal="damage_taken" from="HealthSystem" to="StateMachine" method="_on_health_system_damage_taken"]

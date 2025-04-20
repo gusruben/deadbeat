@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwyopwlwou5qn"]
+
+[ext_resource type="Script" uid="uid://boaw3rlwucqme" path="res://Scripts/shooting_system.gd" id="1_5ha21"]
+[ext_resource type="Script" uid="uid://q8tpx0e6wud5" path="res://Scripts/guns/ray.gd" id="1_y6bca"]
+[ext_resource type="Texture2D" uid="uid://cvxb3f6bou2qa" path="res://Assets/Guns/beam.png" id="2_5ha21"]
+[ext_resource type="PackedScene" uid="uid://cbgsl1beyr6yk" path="res://Scenes/Weapons/test_weapon_1.tscn" id="2_817fk"]
+
+[node name="TestWeapon1" type="Node2D"]
+script = ExtResource("1_y6bca")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 7.0
+texture_mode = 1
+
+[node name="TestWeapon1" parent="Line2D" instance=ExtResource("2_817fk")]
+
+[node name="ShootingSystem" type="Marker2D" parent="."]
+script = ExtResource("1_5ha21")
+metadata/_custom_type_script = "uid://boaw3rlwucqme"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, 0)
+texture = ExtResource("2_5ha21")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(1000, 0)
+collision_mask = 2
